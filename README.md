@@ -49,7 +49,7 @@ The primary purpose of this repository is to systematically preserve and organiz
 
 ### 7. Stochastic Mathematics
 
-* Random Matrix Theory **In Progress**
+* Random Matrix Theory **[In Progress]**
 * Applied Stochastic Processes
 
 ---
