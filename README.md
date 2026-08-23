@@ -20,6 +20,7 @@ The primary purpose of this repository is to systematically preserve and organiz
 
 * Advanced Algebra I
 * Advanced Algebra II
+* Algebraic Frontiers
 * Abstract Algebra
 
 ### 3. Differential Equations
@@ -30,7 +31,7 @@ The primary purpose of this repository is to systematically preserve and organiz
 ### 4. Probability & Statistics
 
 * Probability Theory — Undergraduate
-* Probability Theory — Graduate
+* Probability Theory — Graduate  **[Planned]**
 * Mathematical Statistics
 * Econometrics
 
@@ -38,21 +39,32 @@ The primary purpose of this repository is to systematically preserve and organiz
 
 * Numerical Analysis
 * Numerical Methods for Partial Differential Equations
-* MATLAB
-* Mathematical Experiments
+* MATLAB and Mathematical Experiments
 * Mathematical Modeling
 
 ### 6. Combinatorics
 
 * Discrete Mathematics
-* Combinatorics
+* Combinatorics  **[Planned]**
 
 ### 7. Stochastic Mathematics
 
-* Random Matrix Theory
+* Random Matrix Theory **In Progress**
 * Applied Stochastic Processes
 
 ---
+## Status
+
+This repository is an ongoing project. Some notes are based on
+courses I have already completed, while others are currently being
+developed alongside coursework or independent reading.
+
+Status labels used below:
+
+- **Completed** — notes have been substantially organized and typeset.
+- **In Progress** — currently being written, revised, or expanded.
+- **Planned** — the corresponding course or reading project has not
+  yet been completed.
 
 ## Note Format
 
