@@ -28,7 +28,7 @@ The primary purpose of this repository is to systematically preserve and organiz
 * Ordinary Differential Equations
 * Partial Differential Equations
 
-### 4. Probability & Statistics
+### 4. Probability & Statistics & Randomness
 
 * Probability Theory — Undergraduate
 * Probability Theory — Graduate  **[Planned]**
