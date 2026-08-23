@@ -34,6 +34,8 @@ The primary purpose of this repository is to systematically preserve and organiz
 * Probability Theory — Graduate  **[Planned]**
 * Mathematical Statistics
 * Econometrics
+* Applied Stochastic Processes
+* Random Matrix Theory **[In Progress]**
 
 ### 5. Applied & Computational Mathematics
 
@@ -46,11 +48,6 @@ The primary purpose of this repository is to systematically preserve and organiz
 
 * Discrete Mathematics
 * Combinatorics  **[Planned]**
-
-### 7. Stochastic Mathematics
-
-* Random Matrix Theory **[In Progress]**
-* Applied Stochastic Processes
 
 ---
 ## Status
