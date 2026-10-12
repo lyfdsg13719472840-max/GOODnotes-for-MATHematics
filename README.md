@@ -28,14 +28,13 @@ The primary purpose of this repository is to systematically preserve and organiz
 * Ordinary Differential Equations
 * Partial Differential Equations
 
-### 4. Probability & Statistics & Randomness
+### 4. Probability & Statistics
 
 * Probability Theory — Undergraduate
-* Probability Theory — Graduate  **[Planned]**
+* Probability Theory — Graduate  **[In Progress]**
 * Mathematical Statistics
 * Econometrics
 * Applied Stochastic Processes
-* Random Matrix Theory **[In Progress]**
 
 ### 5. Applied & Computational Mathematics
 
@@ -43,11 +42,12 @@ The primary purpose of this repository is to systematically preserve and organiz
 * Numerical Methods for Partial Differential Equations
 * MATLAB and Mathematical Experiments
 * Mathematical Modeling
+* Game Theory  **[In Progress]**
 
 ### 6. Combinatorics
 
 * Discrete Mathematics
-* Combinatorics  **[Planned]**
+* Combinatorics  **[In Progress]**
 
 ---
 ## Status
