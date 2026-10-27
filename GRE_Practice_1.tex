@@ -1,0 +1,301 @@
+% Compile with XeLaTeX.
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+\begin{document}
+\hypertarget{gre-mathematics-ux9519ux9898ux4e0eux4e0dux786eux5b9aux9898practice-1}{%
+\section{GRE Mathematics 错题与不确定题：Practice
+1}\label{gre-mathematics-ux9519ux9898ux4e0eux4e0dux786eux5b9aux9898practice-1}}
+
+本次记录 10
+道错题：24、27、43、44、50、53、60、62、64、65；另收录答对但不确定的
+36、37。题号和选项对应 Practice
+1。错因依据作答者自述；错题不自动等于知识漏洞，猜对也不等于掌握。
+
+\hypertarget{ux9f50ux6b21ux65b9ux7a0bux7ec4ux7684ux89e3ux7a7aux95f4e}{%
+\subsection{24.
+齐次方程组的解空间：E}\label{ux9f50ux6b21ux65b9ux7a0bux7ec4ux7684ux89e3ux7a7aux95f4e}}
+
+\textbf{错因：}误解 consistent，且未验证解空间维数。consistent
+意为至少有一个解；齐次方程组一定有零解，因此必 consistent。
+
+第二式给 \(w=-4x-y\)，代入第一式得 \(x=y+2z\)，因此
+
+\[ (w,x,y,z)=y(-5,1,1,0)+z(-8,2,0,1). \]
+
+另外两式也满足。两个向量线性无关，所以解空间维数为
+2，并非所有解都是第一个向量的倍数，E 错。A 正确；B 有无穷多解；C
+因线性性成立；D 可直接代入。一般而言齐次系统 \(Ax=0\)
+的解构成子空间，维数为未知数个数减去
+\(\operatorname{rank}A\)；非齐次系统有解才称
+consistent，其解集一般是一个仿射空间。
+
+\hypertarget{ux590dux6570ux7684ux5e45ux89d2ux4e0eux6a21d}{%
+\subsection{27.
+复数的幅角与模：D}\label{ux590dux6570ux7684ux5e45ux89d2ux4e0eux6a21d}}
+
+\textbf{错因：}只考虑幅角，漏掉模长。
+
+\[ (1+i)^{10}=\bigl(\sqrt2\,e^{i\pi/4}\bigr)^{10}=32e^{5\pi i/2}=32i. \]
+
+也可用 \((1+i)^2=2i\)，得到
+\((2i)^5=32i\)。复数乘方时，模取幂、幅角乘指数；两者缺一不可。
+
+\hypertarget{ux5185ux90e8ux95edux5305ux548cux8fdeux901acux7b54ux5bf9ux4f46ux4e0dux786eux5b9a}{%
+\subsection{36.
+内部、闭包和连通：C（答对但不确定）}\label{ux5185ux90e8ux95edux5305ux548cux8fdeux901acux7b54ux5bf9ux4f46ux4e0dux786eux5b9a}}
+
+C 所述集合恰是内部 \(S^\circ\)：所有存在开邻域包含于 \(S\)
+的点。它是所有包含于 \(S\) 的开集之并，因而开。
+
+\begin{itemize}
+\tightlist
+\item
+  A 要求任意两点之间有包含于 \(S\) 的连续路径；取 \(S=\{0,1\}\)
+  即不成立，因为连续函数在区间上的像是连通的。
+\item
+  B 要求每个不属于 \(S\) 的点有不碰 \(S\) 的开邻域；取
+  \(S=(0,1)\)、\(u=0\)，不成立。
+\item
+  D 所述集合是 \(\mathbb R\setminus\overline S\)，总是开集，不一定闭。取
+  \(S=[0,1]\)。
+\item
+  E 中所有包含 \(S\) 的闭集之交是闭包 \(\overline S\)，不一定是
+  \(S\)；取 \(S=(0,1)\)。
+\end{itemize}
+
+\textbf{速记：}内部是最大开子集，闭包是最小闭超集，边界为
+\(\overline S\setminus S^\circ\)。集合开不代表不闭，闭不代表不开。
+
+\hypertarget{ux5e42ux7b49ux53d8ux6362cux7b54ux5bf9ux4f46ux4e0dux786eux5b9a}{%
+\subsection{37.
+幂等变换：C（答对但不确定）}\label{ux5e42ux7b49ux53d8ux6362cux7b54ux5bf9ux4f46ux4e0dux786eux5b9a}}
+
+\(P^2=P\) 是投影。对任意 \(v\)，
+
+\[v=Pv+(v-Pv),\quad Pv\in\operatorname{im}P,\quad v-Pv\in\ker P.\]
+
+交集只有零，故 \(V=\operatorname{im}P\oplus\ker P\)。在像空间上 \(P\)
+是恒等，在核上是零，因此选择这两个空间的基组成的基，矩阵为
+\(\operatorname{diag}(I,0)\)，必可对角化。I 错：零变换不可逆；III
+错：\(\operatorname{diag}(1,0)\) 既非 \(I\) 也非零。只证明特征值属于
+\(\{0,1\}\)
+不足以单独证明可对角化；还需像上述给出完整特征向量基，或使用最小多项式整除无重根的
+\(t(t-1)\)。
+
+\hypertarget{ux53c2ux6570ux66f2ux7ebfux4e8cux9636ux5bfcux6570a}{%
+\subsection{43.
+参数曲线二阶导数：A}\label{ux53c2ux6570ux66f2ux7ebfux4e8cux9636ux5bfcux6570a}}
+
+\textbf{错因：}求解过快。\(x=t^2+2t,\ y=3t^4+4t^3\)，由 \(t>0\) 和
+\(x=8\) 得 \(t=2\)。先求
+
+\[\frac{dy}{dx}=\frac{12t^3+12t^2}{2t+2}=6t^2,\qquad \frac{d^2y}{dx^2}=\frac{d(6t^2)/dt}{dx/dt}=\frac{12t}{2t+2}.\]
+
+代入 \(t=2\) 得 4。每次对 \(x\) 求导，都要除以 \(dx/dt\)；不是直接对
+\(t\) 求两次导数。
+
+\hypertarget{ux4e00ux9636ux5faeux5206ux65b9ux7a0bb}{%
+\subsection{44.
+一阶微分方程：B}\label{ux4e00ux9636ux5faeux5206ux65b9ux7a0bb}}
+
+\textbf{错因：}符号未代回原式核验。\(y'+xy=x,\ y(0)=-1\)。令
+\(u=y-1\)，则 \(u'=-xu\)，所以
+
+\[y=1+Ce^{-x^2/2}=1-2e^{-x^2/2},\qquad \lim_{x\to-\infty}y(x)=1.\]
+
+检验：\(y'=2xe^{-x^2/2}\)，故 \(y'+xy=x\)，且 \(y(0)=-1\)。分离变量时
+\(\int -x\,dx=-x^2/2\)；绝对值和任意常数应处理正确。
+
+\hypertarget{ux7406ux60f3ux7684ux548cux9010ux9879ux4e58ux79efux4e0eux4ea4d}{%
+\subsection{50.
+理想的和、逐项乘积与交：D}\label{ux7406ux60f3ux7684ux548cux9010ux9879ux4e58ux79efux4e0eux4ea4d}}
+
+\textbf{错因：}理想的闭合条件及理想乘积的定义不熟。双侧理想 \(I\)
+是加法子群，且对 \(r\in R,a\in I\)，有 \(ra,ar\in I\)。
+
+I：\(U+V=\{u+v\}\) 是理想；加法与左右乘吸收分别由 \(U,V\)
+的性质得到。III：\(U\cap V\) 是理想，因为相关运算同时留在 \(U\) 和
+\(V\)。
+
+II：题目只允许\textbf{单个乘积}构成的集合
+\(\{uv:u\in U,v\in V\}\)，不一定对加法封闭。具体取
+\(R=\mathbb R[x,y]\)、\(U=V=(x,y)\)。\(x^2,y^2\) 都是单个乘积，但
+\(x^2+y^2\) 不是两个属于 \((x,y)\)
+的多项式的乘积：若能分解，两个因子的最低非零齐次部分均为实线性式，它们的乘积应为
+\(x^2+y^2\)，然而后者不能分解为两个实线性式。故 II 不成立。
+
+\textbf{相关高频知识：}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  通常的理想乘积 \(UV\) 定义为有限和
+  \(\{\sum_{i=1}^m u_iv_i\}\)，不是单个乘积集合；它总是双侧理想，且
+  \(UV\subseteq U\cap V\)。理想的并一般不是理想；两个理想的并是理想当且仅当其中一个包含另一个。
+\item
+  环同态的核是理想；商环 \(R/I\) 需要 \(I\)
+  是双侧理想。交换含幺环中，真理想 \(I\) 极大当且仅当 \(R/I\)
+  是域；\(I\) 素当且仅当 \(R/I\) 是整环。域的理想只有 \(\{0\}\)
+  和整个域。
+\item
+  \(\mathbb Z\) 的每个理想都是
+  \(n\mathbb Z\)；\(a\mathbb Z+b\mathbb Z=\gcd(a,b)\mathbb Z\)，交为
+  \(\operatorname{lcm}(a,b)\mathbb Z\)。\(\mathbb Z/n\mathbb Z\)
+  是域当且仅当 \(n\) 为素数。
+\item
+  群同态的核是正规子群；有限群中元素的阶整除群的阶（拉格朗日定理），但阶整除不意味着一定存在该阶元素。循环群的子群均循环；阶为
+  \(n\) 的循环群中 \(g^k\) 的阶为 \(n/\gcd(n,k)\)。
+\end{enumerate}
+
+\hypertarget{ux53d8ux4e0aux9650ux79efux5206ux4e0eux5149ux6ed1ux6027a}{%
+\subsection{53.
+变上限积分与光滑性：A}\label{ux53d8ux4e0aux9650ux79efux5206ux4e0eux5149ux6ed1ux6027a}}
+
+题设 \(g(x)=\int_0^x f(y)(y-x)\,dy\)，给定 \(g\in C^3\)，求必须有
+\(f\in C^n\) 的最大 \(n\)。解题时要注意方向：从 \(g\)
+的正则性\textbf{反推} \(f\)。
+
+在通常的连续被积函数假设下，莱布尼茨公式给出
+
+\[g'(x)=-\int_0^x f(y)\,dy,\qquad g''(x)=-f(x),\qquad g'''(x)=-f'(x).\]
+
+因此 \(f=-g''\in C^1\)。不一定是 \(C^2\)：取 \(f(x)=|x|^{3/2}\)，它属于
+\(C^1\) 但在 0 不属于 \(C^2\)；由上式构造的 \(g\) 属于
+\(C^3\)，故不能保证更多。
+
+关于题设的细节：原题未明确写 \(f\) 连续。若只按通常 Riemann
+积分理解，改变 \(f\) 在单个点的值不改变任何积分，却可破坏 \(f\)
+的连续性；于是严格字面表述有缺口，A 需要补充 \(f\) 连续等假设。若按广义
+Lebesgue 积分，更只能先得到几乎处处的结论。ETS 预期答案 A
+基于通常的连续性假设，不应把这一隐含条件忽略。
+
+你的直觉抓住了变上限积分带来的求导关系；这里具体是两次求导后恢复
+\(-f\)，所以 \(g\) 的三次连续可微对应 \(f\) 的一次连续可微。
+
+\hypertarget{ux91cfux8bcdux548cux65e0ux7a77ux8fdcux5904ux6781ux9650d}{%
+\subsection{60.
+量词和无穷远处极限：D}\label{ux91cfux8bcdux548cux65e0ux7a77ux8fdcux5904ux6781ux9650d}}
+
+题设是对每个 \(\varepsilon>0\)，存在 \(\delta>0\)，只要
+\textbf{\(|x-1|\ge\delta\)}，就有
+\textbf{\(|f(x)-f(1)|\ge\varepsilon\)}。它控制的是远离 1
+的点，输出也远离 \(f(1)\)，不是连续性。连续性要求
+\(|x-1|<\delta\Rightarrow|f(x)-f(1)|<\varepsilon\)。
+
+令 \(c=f(1)\)。题设等价于 \(|f(x)-c|\to\infty\)，当
+\(|x|\to\infty\)：因为 \(|x|\) 与 \(|x-1|\) 同时趋向无穷。再由
+
+\[\bigl||f(x)|-|f(x)-c|\bigr|\le |c|\]
+
+可知它等价于 \(|f(x)|\to\infty\)，即 D。形式上，如要证明 D，由题设选阈值
+\(M+|c|+1\)，即可得到 \(|f(x)|>M\)；反向同理。
+
+A 不等价：\(f(x)=x\)
+连续且满足题设，但常数函数也连续，却不满足题设；另外令
+\(f(1)=0\)、\(f(x)=x\)（\(x\ne1\)），满足 D 但在 1 不连续。C
+仅要求无界，如 \(\sin(x^2)x\) 无界却不趋于无穷。不要只盯
+\(\varepsilon,\delta\)，先看两个不等号的方向与量词。
+
+\hypertarget{ux5750ux6807ux4e2dux81f3ux5c11ux4e00ux4e2aux65e0ux7406c}{%
+\subsection{62.
+坐标中至少一个无理：C}\label{ux5750ux6807ux4e2dux81f3ux5c11ux4e00ux4e2aux65e0ux7406c}}
+
+\textbf{错因：}漏读 ``x or y, or both''。设
+\(S=[0,1]^2\setminus(\mathbb Q\times\mathbb Q)\)。从任意
+\(p=(a,b)\in S\) 出发，若 \(a\) 无理，先沿竖线到
+\((a,\beta)\)，其中任选无理 \(\beta\in(0,1)\)；若 \(a\) 有理，则 \(b\)
+无理，先水平走到 \((\alpha,b)\)（\(\alpha\) 无理），再竖直走到
+\((\alpha,\beta)\)。每段至少有一个固定的无理坐标。任意两点均可连到同一个
+\((\alpha,\beta)\)，所以 \(S\) 路径连通，从而连通。
+
+\(S\) 在正方形中稠密，但不包含有理坐标点，因此在 \(\mathbb R^2\)
+中不闭、不紧；也不是开集，因为每个邻域都含有两个坐标均有理的点。它包含线段，所以不是全不连通。注意开闭均相对于题目指定的
+\(\mathbb R^2\)。
+
+\hypertarget{ux6563ux5ea6ux5b9aux7406ux901aux91cfux53caux573aux8bbae}{%
+\subsection{64.
+散度定理、通量及场论：E}\label{ux6563ux5ea6ux5b9aux7406ux901aux91cfux53caux573aux8bbae}}
+
+题目是
+\(z=\sqrt{1-x^2-y^2}\)，即单位球的上半球，而不是抛物面。\(F=(x,y,z)\)，散度为
+3。用 \(z=0\) 的圆盘封闭半球，半球体积为 \(2\pi/3\)；圆盘外法向为
+\(-\mathbf k\)，由于 \(z=0\)，底面通量为 0。因此
+
+\[\iint_S F\cdot n\,dS=3\cdot\frac{2\pi}{3}=2\pi.\]
+
+另一种快速方法：单位球上外法向 \(n=(x,y,z)=F\)，所以
+\(F\cdot n=1\)，通量就是上半球面积 \(2\pi\)。你的红笔计算 \(4\pi\)
+是整个单位球的总通量；本题只取上半球，因此减半。
+
+\textbf{通用方法：}图形曲面 \(z=h(x,y)\) 上向面积向量是
+\((-h_x,-h_y,1)\,dx\,dy\)，因此通量
+\(\iint_D[-P h_x-Q h_y+R]dxdy\)；下向取负。若能加盖形成闭曲面，先算
+\(\iiint_\Omega\operatorname{div}F\,dV\)，再减去盖面的通量。换成其他
+\(F=(P,Q,R)\) 时，先算
+\(\operatorname{div}F=P_x+Q_y+R_z\)，不要把散度默认为 3。
+
+\textbf{三个核心公式：}
+
+\begin{itemize}
+\tightlist
+\item
+  Green：正向平面简单闭曲线
+  \(C=\partial D\)，\(\oint_C P\,dx+Q\,dy=\iint_D(Q_x-P_y)dA\)。
+\item
+  Stokes：\(\oint_{\partial S}F\cdot d\mathbf r=\iint_S(\nabla\times F)\cdot n\,dS\)，边界方向和法向按右手规则配合。
+\item
+  Gauss：闭曲面外向
+  \(\iint_{\partial\Omega}F\cdot n\,dS=\iiint_\Omega\nabla\cdot F\,dV\)。
+\end{itemize}
+
+\textbf{无旋、保守、无散：}\(\nabla\times F=0\) 称无旋；\(F=\nabla\phi\)
+称保守，保守场的线积分路径无关，闭路积分为零。\(F\in C^1\)
+在开、连通、单连通区域上无旋时保守；星形开区域是可用的充分条件。无这些区域条件可能失败，例如穿孔平面上的
+\((-y/(x^2+y^2),x/(x^2+y^2))\) 无旋，但绕原点的闭路积分为
+\(2\pi\)。\(\nabla\cdot F=0\)
+称无散（solenoidal），与无旋是不同条件；在足够好的区域中旋度场
+\(F=\nabla\times A\) 必无散，反向需要区域拓扑条件。星形区域指存在一点
+\(a\)，使区域中每个点与 \(a\) 的整条线段都在区域内。
+
+\hypertarget{cauchyriemann-ux65b9ux7a0be}{%
+\subsection{65. Cauchy--Riemann
+方程：E}\label{cauchyriemann-ux65b9ux7a0be}}
+
+\(u=e^x\sin y\)，\(v=g\)。解析性给出 \(u_x=v_y\)、\(u_y=-v_x\)，所以
+\(g_x=-e^x\cos y\)。固定 \(y=2\)，
+
+\[g(3,2)-g(1,2)=\int_1^3-e^x\cos2\,dx=(e-e^3)\cos2.\]
+
+也可得 \(g=-e^x\cos y+C\)。记忆时写出矩阵关系
+\(u_x=v_y,\ u_y=-v_x\)；若要从 CR
+方程反推解析，通常还需要偏导连续等充分条件。
+
+\hypertarget{ux8badux7ec3ux4e0eux8003ux573aux68c0ux67e5}{%
+\subsection{训练与考场检查}\label{ux8badux7ec3ux4e0eux8003ux573aux68c0ux67e5}}
+
+\begin{itemize}
+\tightlist
+\item
+  第一优先：50 理想，53 积分正则性，60 量词，64 场论；另外回炉 36 开闭与
+  37 投影。
+\item
+  易避免错误：24 齐次系统、27 模长、43 链式法则、44 代回、62 or both、65
+  CR 符号。把具体检查动作写在草稿边上，而非只提醒自己``仔细''。
+\item
+  170 分钟约为每题 2 分 35 秒。若第一遍约 120 分钟，可预留约 50
+  分钟处理卡题及复核，但需用正式环境的完整计时重复验证。推荐先标记不确定题，再按收益检查：看清题意和符号、代回、检查数量级及定义，最后处理知识缺口。
+\item
+  十错改善至四五错需要多挽回 5--6 题；36、37
+  虽正确也可能在新卷失分。单次表现不能换算成可靠概率或分位数，需多套独立、限时试卷来判断稳定性。
+\end{itemize}
+
+\end{document}
