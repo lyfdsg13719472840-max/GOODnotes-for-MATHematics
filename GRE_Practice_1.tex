@@ -126,17 +126,59 @@ Let $V$ be a finite-dimensional real vector space and let $P$ be a linear transf
 \textbf{解答与分析}\par
 
 
-\(P^2=P\) 是投影。对任意 \(v\)，
+\textbf{基本概念。}像空间与核空间分别定义为
+\[
+\operatorname{im}P=\{P(v):v\in V\},\qquad
+\ker P=\{v\in V:P(v)=0\}.
+\]
 
-\[v=Pv+(v-Pv),\quad Pv\in\operatorname{im}P,\quad v-Pv\in\ker P.\]
+\textbf{第一步：像空间中的向量经过 \(P\) 后不变。}任取 \(u\in\operatorname{im}P\)，由定义存在 \(v\in V\) 使 \(u=P(v)\)。因此
+\[
+P(u)=P(P(v))=P^2(v)=P(v)=u.
+\]
+所以 \(P\) 在像空间上是恒等变换；其中的每个非零向量都是特征值 \(1\) 的特征向量。
 
-交集只有零，故 \(V=\operatorname{im}P\oplus\ker P\)。在像空间上 \(P\)
-是恒等，在核上是零，因此选择这两个空间的基组成的基，矩阵为
-\(\operatorname{diag}(I,0)\)，必可对角化。I 错：零变换不可逆；III
-错：\(\operatorname{diag}(1,0)\) 既非 \(I\) 也非零。只证明特征值属于
-\(\{0,1\}\)
-不足以单独证明可对角化；还需像上述给出完整特征向量基，或使用最小多项式整除无重根的
-\(t(t-1)\)。
+\textbf{第二步：核空间中的向量经过 \(P\) 后变为零。}若 \(w\in\ker P\)，则按核的定义 \(P(w)=0\)。因此核空间中的每个非零向量都是特征值 \(0\) 的特征向量。
+
+\textbf{第三步：证明 \(V=\operatorname{im}P\oplus\ker P\)。}任取 \(v\in V\)，写成
+\[
+v=P(v)+\bigl(v-P(v)\bigr).
+\]
+第一项 \(P(v)\in\operatorname{im}P\)。对第二项作用 \(P\)，由线性性与 \(P^2=P\)，
+\[
+P\bigl(v-P(v)\bigr)=P(v)-P^2(v)=0,
+\]
+故 \(v-P(v)\in\ker P\)。这证明每个向量都是像空间中的向量与核空间中的向量之和，即 \(V=\operatorname{im}P+\ker P\)。
+
+这个分解还是唯一的：若 \(u\in\operatorname{im}P\cap\ker P\)，由第一步有 \(P(u)=u\)，由核的定义又有 \(P(u)=0\)，故 \(u=0\)。因此两个子空间交集仅含零向量，得到直和
+\[
+V=\operatorname{im}P\oplus\ker P.
+\]
+
+\textbf{第四步：选基并写出矩阵。}取像空间的一组基 \(u_1,\ldots,u_r\)，以及核空间的一组基 \(w_1,\ldots,w_s\)。上述直和分解保证
+\[
+\mathcal B=(u_1,\ldots,u_r,w_1,\ldots,w_s)
+\]
+是 \(V\) 的一组基。对这些基向量，
+\[
+P(u_i)=u_i\quad(1\le i\le r),\qquad P(w_j)=0\quad(1\le j\le s).
+\]
+矩阵的每一列是相应基向量的像在基 \(\mathcal B\) 下的坐标，因此
+\[
+[P]_{\mathcal B}=
+\begin{pmatrix}I_r&0\\0&0\end{pmatrix}
+=\operatorname{diag}(\underbrace{1,\ldots,1}_{r},
+\underbrace{0,\ldots,0}_{s}).
+\]
+这是一個对角矩阵。于是 \(P\) 有一组由特征向量组成的基，故 \(P\) 可对角化，II 成立。若像空间或核空间是零空间，则相应的一组基为空，上述结论仍成立。
+
+\textbf{具体例子。}在 \(\mathbb R^2\) 上令 \(P(x,y)=(x,0)\)。则 \(P^2=P\)，像空间为 \(x\) 轴 \(\operatorname{span}\{(1,0)\}\)，核空间为 \(y\) 轴 \(\operatorname{span}\{(0,1)\}\)。在由这两个向量组成的基下，矩阵为
+\[
+\begin{pmatrix}1&0\\0&0\end{pmatrix}.
+\]
+I 不一定成立：零变换在非零空间上不可逆。III 不一定成立：这个例子既非恒等变换也非零变换。因此答案为 C。
+
+\textbf{易错点。}仅证明特征值属于 \(\{0,1\}\) 本身不足以证明可对角化；还需要证明存在足够多的线性无关特征向量。上述直和分解给出了完整特征向量基。也可使用最小多项式整除无重根多项式 \(t(t-1)\) 来证明。
 
 \hypertarget{ux53c2ux6570ux66f2ux7ebfux4e8cux9636ux5bfcux6570a}{%
 \subsection{43.
