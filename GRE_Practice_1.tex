@@ -23,6 +23,18 @@
 \subsection{24.
 齐次方程组的解空间：E}\label{ux9f50ux6b21ux65b9ux7a0bux7ec4ux7684ux89e3ux7a7aux95f4e}}
 
+\textbf{原题（Original problem）}\par
+Consider the system of linear equations
+\[\begin{aligned}w+3x+2y+2z&=0,\\ w+4x+y&=0,\\ 3w+5x+10y+14z&=0,\\ 2w+5x+5y+6z&=0.\end{aligned}\]
+with solutions of the form $(w,x,y,z)$, where $w$, $x$, $y$, and $z$ are real. Which of the following statements is FALSE?
+\begin{enumerate}[label=(\Alph*)]
+\item The system is consistent. \item The system has infinitely many solutions. \item The sum of any two solutions is a solution. \item $(-5,1,1,0)$ is a solution. \item Every solution is a scalar multiple of $(-5,1,1,0)$.
+\end{enumerate}
+\textbf{词语：}consistent：有解（has at least one solution）；scalar multiple：标量倍数；FALSE：错误的。
+
+\textbf{解答与分析}\par
+
+
 \textbf{错因：}误解 consistent，且未验证解空间维数。consistent
 意为至少有一个解；齐次方程组一定有零解，因此必 consistent。
 
@@ -41,6 +53,16 @@ consistent，其解集一般是一个仿射空间。
 \subsection{27.
 复数的幅角与模：D}\label{ux590dux6570ux7684ux5e45ux89d2ux4e0eux6a21d}}
 
+\textbf{原题（Original problem）}\par
+$(1+i)^{10}=$
+\begin{enumerate}[label=(\Alph*),nosep]
+\item $1$ \item $i$ \item $32$ \item $32i$ \item $32(i+1)$
+\end{enumerate}
+\textbf{词语：}modulus：复数的模；argument：复数的幅角。
+
+\textbf{解答与分析}\par
+
+
 \textbf{错因：}只考虑幅角，漏掉模长。
 
 \[ (1+i)^{10}=\bigl(\sqrt2\,e^{i\pi/4}\bigr)^{10}=32e^{5\pi i/2}=32i. \]
@@ -51,6 +73,20 @@ consistent，其解集一般是一个仿射空间。
 \hypertarget{ux5185ux90e8ux95edux5305ux548cux8fdeux901acux7b54ux5bf9ux4f46ux4e0dux786eux5b9a}{%
 \subsection{36.
 内部、闭包和连通：C（答对但不确定）}\label{ux5185ux90e8ux95edux5305ux548cux8fdeux901acux7b54ux5bf9ux4f46ux4e0dux786eux5b9a}}
+
+\textbf{原题（Original problem）}\par
+Suppose $S$ is a nonempty subset of $\mathbb R$. Which of the following is necessarily true?
+\begin{enumerate}[label=(\Alph*)]
+\item For each $s,t\in S$, there exists a continuous function $f$ mapping $[0,1]$ into $S$ with $f(0)=s$ and $f(1)=t$.
+\item For each $u\notin S$, there exists an open subset $U$ of $\mathbb R$ such that $u\in U$ and $U\cap S=\varnothing$.
+\item $\{v\in S:\text{there exists an open subset }V\text{ of }\mathbb R\text{ with }v\in V\subseteq S\}$ is an open subset of $\mathbb R$.
+\item $\{w\notin S:\text{there exists an open subset }W\text{ of }\mathbb R\text{ with }w\in W\text{ and }W\cap S=\varnothing\}$ is a closed subset of $\mathbb R$.
+\item $S$ is the intersection of all closed subsets of $\mathbb R$ that contain $S$.
+\end{enumerate}
+\textbf{词语：}necessarily true：必然成立；open/closed subset：开/闭子集；intersection：交集。
+
+\textbf{解答与分析}\par
+
 
 C 所述集合恰是内部 \(S^\circ\)：所有存在开邻域包含于 \(S\)
 的点。它是所有包含于 \(S\) 的开集之并，因而开。
@@ -78,6 +114,18 @@ C 所述集合恰是内部 \(S^\circ\)：所有存在开邻域包含于 \(S\)
 \subsection{37.
 幂等变换：C（答对但不确定）}\label{ux5e42ux7b49ux53d8ux6362cux7b54ux5bf9ux4f46ux4e0dux786eux5b9a}}
 
+\textbf{原题（Original problem）}\par
+Let $V$ be a finite-dimensional real vector space and let $P$ be a linear transformation of $V$ such that $P^2=P$. Which of the following must be true?
+\begin{enumerate}[label=\Roman*.]
+\item $P$ is invertible. \item $P$ is diagonalizable. \item $P$ is either the identity transformation or the zero transformation.
+\end{enumerate}
+(A) None \quad (B) I only \quad (C) II only \quad (D) III only \quad (E) II and III.
+
+\textbf{词语：}invertible：可逆；diagonalizable：可对角化；identity transformation：恒等变换。
+
+\textbf{解答与分析}\par
+
+
 \(P^2=P\) 是投影。对任意 \(v\)，
 
 \[v=Pv+(v-Pv),\quad Pv\in\operatorname{im}P,\quad v-Pv\in\ker P.\]
@@ -94,6 +142,18 @@ C 所述集合恰是内部 \(S^\circ\)：所有存在开邻域包含于 \(S\)
 \subsection{43.
 参数曲线二阶导数：A}\label{ux53c2ux6570ux66f2ux7ebfux4e8cux9636ux5bfcux6570a}}
 
+\textbf{原题（Original problem）}\par
+A curve in the $xy$-plane is given parametrically by
+\[x=t^2+2t,\qquad y=3t^4+4t^3\]
+for all $t>0$. The value of $d^2y/dx^2$ at the point $(8,80)$ is
+
+(A) $4$ \quad (B) $24$ \quad (C) $32$ \quad (D) $96$ \quad (E) $192$.
+
+\textbf{词语：}given parametrically：以参数方程给出；second derivative：二阶导数。
+
+\textbf{解答与分析}\par
+
+
 \textbf{错因：}求解过快。\(x=t^2+2t,\ y=3t^4+4t^3\)，由 \(t>0\) 和
 \(x=8\) 得 \(t=2\)。先求
 
@@ -106,6 +166,17 @@ C 所述集合恰是内部 \(S^\circ\)：所有存在开邻域包含于 \(S\)
 \subsection{44.
 一阶微分方程：B}\label{ux4e00ux9636ux5faeux5206ux65b9ux7a0bb}}
 
+\textbf{原题（Original problem）}\par
+\[y'+xy=x,\qquad y(0)=-1.\]
+If $y$ is a real-valued function defined on the real line and satisfying the initial value problem above, then $\displaystyle\lim_{x\to-\infty}y(x)=$
+
+(A) $0$ \quad (B) $1$ \quad (C) $-1$ \quad (D) $\infty$ \quad (E) $-\infty$.
+
+\textbf{词语：}initial value problem：初值问题；real-valued：取实值的；satisfying：满足。
+
+\textbf{解答与分析}\par
+
+
 \textbf{错因：}符号未代回原式核验。\(y'+xy=x,\ y(0)=-1\)。令
 \(u=y-1\)，则 \(u'=-xu\)，所以
 
@@ -117,6 +188,20 @@ C 所述集合恰是内部 \(S^\circ\)：所有存在开邻域包含于 \(S\)
 \hypertarget{ux7406ux60f3ux7684ux548cux9010ux9879ux4e58ux79efux4e0eux4ea4d}{%
 \subsection{50.
 理想的和、逐项乘积与交：D}\label{ux7406ux60f3ux7684ux548cux9010ux9879ux4e58ux79efux4e0eux4ea4d}}
+
+\textbf{原题（Original problem）}\par
+Let $R$ be a ring and let $U$ and $V$ be (two-sided) ideals of $R$. Which of the following must also be ideals of $R$?
+\begin{enumerate}[label=\Roman*.]
+\item $U+V=\{u+v:u\in U\text{ and }v\in V\}$.
+\item $U\cdot V=\{uv:u\in U\text{ and }v\in V\}$.
+\item $U\cap V$.
+\end{enumerate}
+(A) II only \quad (B) III only \quad (C) I and II only \quad (D) I and III only \quad (E) I, II, and III.
+
+\textbf{词语：}ring：环；(two-sided) ideal：（双侧）理想；must also be：也必定是。注意 II 在题目中明确指单个乘积的集合。
+
+\textbf{解答与分析}\par
+
 
 \textbf{错因：}理想的闭合条件及理想乘积的定义不熟。双侧理想 \(I\)
 是加法子群，且对 \(r\in R,a\in I\)，有 \(ra,ar\in I\)。
@@ -160,6 +245,16 @@ II：题目只允许\textbf{单个乘积}构成的集合
 \subsection{53.
 变上限积分与光滑性：A}\label{ux53d8ux4e0aux9650ux79efux5206ux4e0eux5149ux6ed1ux6027a}}
 
+\textbf{原题（Original problem）}\par
+Let $f$ and $g$ be functions of a real variable such that $g(x)=\int_0^x f(y)(y-x)\,dy$ for all $x$. If $g$ is three times continuously differentiable, what is the greatest integer $n$ for which $f$ must be $n$ times continuously differentiable?
+
+(A) $1$ \quad (B) $2$ \quad (C) $3$ \quad (D) $4$ \quad (E) $5$.
+
+\textbf{词语：}continuously differentiable：连续可微；greatest integer：最大整数；must be：必然满足。
+
+\textbf{解答与分析}\par
+
+
 题设 \(g(x)=\int_0^x f(y)(y-x)\,dy\)，给定 \(g\in C^3\)，求必须有
 \(f\in C^n\) 的最大 \(n\)。解题时要注意方向：从 \(g\)
 的正则性\textbf{反推} \(f\)。
@@ -185,6 +280,20 @@ Lebesgue 积分，更只能先得到几乎处处的结论。ETS 预期答案 A
 \subsection{60.
 量词和无穷远处极限：D}\label{ux91cfux8bcdux548cux65e0ux7a77ux8fdcux5904ux6781ux9650d}}
 
+\textbf{原题（Original problem）}\par
+A real-valued function $f$ defined on $\mathbb R$ has the following property.
+
+For every positive number $\epsilon$, there exists a positive number $\delta$ such that $|f(x)-f(1)|\ge\epsilon$ whenever $|x-1|\ge\delta$.
+
+This property is equivalent to which of the following statements about $f$?
+\begin{enumerate}[label=(\Alph*)]
+\item $f$ is continuous at $x=1$. \item $f$ is discontinuous at $x=1$. \item $f$ is unbounded. \item $\displaystyle\lim_{|x|\to\infty}|f(x)|=\infty$. \item $\displaystyle\int_0^\infty |f(x)|\,dx=\infty$.
+\end{enumerate}
+\textbf{词语：}whenever：只要；equivalent to：等价于；unbounded：无界。
+
+\textbf{解答与分析}\par
+
+
 题设是对每个 \(\varepsilon>0\)，存在 \(\delta>0\)，只要
 \textbf{\(|x-1|\ge\delta\)}，就有
 \textbf{\(|f(x)-f(1)|\ge\varepsilon\)}。它控制的是远离 1
@@ -209,6 +318,16 @@ A 不等价：\(f(x)=x\)
 \subsection{62.
 坐标中至少一个无理：C}\label{ux5750ux6807ux4e2dux81f3ux5c11ux4e00ux4e2aux65e0ux7406c}}
 
+\textbf{原题（Original problem）}\par
+Let $S$ be the subset of $\mathbb R^2$ consisting of all points $(x,y)$ in the unit square $[0,1]\times[0,1]$ for which $x$ or $y$, or both, are irrational. With respect to the standard topology on $\mathbb R^2$, $S$ is
+\begin{enumerate}[label=(\Alph*),nosep]
+\item closed \item open \item connected \item totally disconnected \item compact
+\end{enumerate}
+\textbf{词语：}or both：或者两者都是，即至少一个；irrational：无理数；connected：连通；totally disconnected：全不连通；compact：紧。
+
+\textbf{解答与分析}\par
+
+
 \textbf{错因：}漏读 ``x or y, or both''。设
 \(S=[0,1]^2\setminus(\mathbb Q\times\mathbb Q)\)。从任意
 \(p=(a,b)\in S\) 出发，若 \(a\) 无理，先沿竖线到
@@ -224,6 +343,16 @@ A 不等价：\(f(x)=x\)
 \hypertarget{ux6563ux5ea6ux5b9aux7406ux901aux91cfux53caux573aux8bbae}{%
 \subsection{64.
 散度定理、通量及场论：E}\label{ux6563ux5ea6ux5b9aux7406ux901aux91cfux53caux573aux8bbae}}
+
+\textbf{原题（Original problem）}\par
+What is the value of the flux of the vector field $\mathbf F$, defined on $\mathbb R^3$ by $\mathbf F(x,y,z)=x\mathbf i+y\mathbf j+z\mathbf k$, through the surface $z=\sqrt{1-x^2-y^2}$ oriented with upward-pointing normal vector field? (Note: $\mathbf i$, $\mathbf j$, and $\mathbf k$ are the standard basis vectors in $\mathbb R^3$.)
+
+(A) $0$ \quad (B) $2\pi/3$ \quad (C) $\pi$ \quad (D) $4\pi/3$ \quad (E) $2\pi$.
+
+\textbf{词语：}flux：通量；vector field：向量场；upward-pointing normal：指向上方的法向量；oriented：指定方向的。
+
+\textbf{解答与分析}\par
+
 
 题目是
 \(z=\sqrt{1-x^2-y^2}\)，即单位球的上半球，而不是抛物面。\(F=(x,y,z)\)，散度为
@@ -269,6 +398,18 @@ A 不等价：\(f(x)=x\)
 \hypertarget{cauchyriemann-ux65b9ux7a0be}{%
 \subsection{65. Cauchy--Riemann
 方程：E}\label{cauchyriemann-ux65b9ux7a0be}}
+
+\textbf{原题（Original problem）}\par
+Let $g$ be a differentiable function of two real variables, and let $f$ be the function of a complex variable $z$ defined by
+\[f(z)=e^x\sin y+ig(x,y),\]
+where $x$ and $y$ are the real and imaginary parts of $z$, respectively. If $f$ is an analytic function on the complex plane, then $g(3,2)-g(1,2)=$
+
+(A) $e^2$ \quad (B) $e^2(\sin3-\sin1)$ \quad (C) $e^2(\cos3-\cos1)$ \quad (D) $e-e^3\sin2$ \quad (E) $(e-e^3)\cos2$.
+
+\textbf{词语：}real and imaginary parts：实部和虚部；respectively：分别；analytic：解析的；complex plane：复平面。
+
+\textbf{解答与分析}\par
+
 
 \(u=e^x\sin y\)，\(v=g\)。解析性给出 \(u_x=v_y\)、\(u_y=-v_x\)，所以
 \(g_x=-e^x\cos y\)。固定 \(y=2\)，
