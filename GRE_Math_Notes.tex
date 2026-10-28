@@ -800,4 +800,197 @@ q^{-1}=\frac{a-bi-cj-dk}{a^2+b^2+c^2+d^2}.
 \item 60、66：先记群、群的阶、循环群、二面体群，以及右理想、除环、域的定义；反例分别记正五边形对称群、四元数环和有限域。
 \item 65：把 from、onto、one-to-one 分开读。连续满射可以重复取值；紧集的连续像是紧集。
 \end{itemize}
+\clearpage
+\section{GRE Mathematics 错题与不确定题：Practice 3}
+本节收录 7、48、55、56、59、62，共 6 题。其中 48、55、59 按自述为答对但不确定；7 重点为词义，56 为已经自行理解后再巩固，62 为广义拓扑知识缺口。这里的收录数量不代表实际错题数，不额外推断整套成绩。原题及选项核对所附试卷 Form GR9367；答案依次为 D、D、E、B、A、B。
+
+\subsection{7. Octants：三维空间的八个卦限：D}
+\label{p3:q7}
+\textbf{原题（Original problem）}
+
+In how many of the eight standard octants of $xyz$-space does the graph of $z=e^{x+y}$ appear?
+
+(A) One \quad (B) Two \quad (C) Three \quad (D) Four \quad (E) Eight.
+
+\textbf{名词解释。}octant：卦限，也称八分空间（one of the eight regions determined by the signs of $x,y,z$）；octants 是复数。二维中两个坐标轴把平面分成四个 quadrant（象限）；三维中三个坐标平面 $x=0,y=0,z=0$ 把空间分成八个 octant。graph：函数图像，本题是空间曲面，不是平面曲线。坐标平面是这些区域的边界，不影响这里的计数。
+
+\textbf{解答。}八个卦限分别对应 $(x,y,z)$ 的正负号组合，共 $2^3=8$ 种。因为指数函数恒正，
+\[
+z=e^{x+y}>0,
+\]
+所以图像不可能进入任何 $z<0$ 的卦限。但 $x,y$ 可任取正数或负数，故下列四种组合都能出现：
+\[
+(+,+,+),\quad (+,-,+),\quad (-,+,+),\quad (-,-,+).
+\]
+例如分别取 $(x,y)=(1,1),(1,-1),(-1,1),(-1,-1)$，都能得到对应的 $z>0$。因此恰好出现于 4 个卦限，选 D；A--C 少算了可能的 $x,y$ 符号，E 则错误地计入 $z<0$ 的区域。
+
+\textbf{可迁移的方法。}遇到 quadrant/octant，先逐个检查各坐标能否为正、为负，不需要先画精确图像。$z>0$ 只限制高度，不能据此把 $x,y$ 也限制为正。
+
+\subsection{48. 有限循环群直积何时仍循环：D（答对但不确定）}
+\label{p3:q48}
+\textbf{原题（Original problem）}
+
+Let $G_n$ denote the cyclic group of order $n$. Which of the following direct products is NOT cyclic?
+\begin{enumerate}[label=(\Alph*)]
+\item $G_{17}\times G_{11}$
+\item $G_{17}\times G_{11}\times G_5$
+\item $G_{17}\times G_{33}$
+\item $G_{22}\times G_{33}$
+\item $G_{49}\times G_{121}$
+\end{enumerate}
+\textbf{名词解释。}cyclic group：循环群，存在某个元素，其整数次幂生成全群；order of a group：群的阶（元素个数）；order of an element：元素的阶，即最小正整数 $k$ 使 $g^k=e$；direct product：直积；coprime / relatively prime：互质；gcd：最大公因数；lcm：最小公倍数。
+
+\textbf{从直积定义出发。}$G\times H$ 的元素是有序对，按分量运算：$(g,h)(g',h')=(gg',hh')$，所以 $(g,h)^k=(g^k,h^k)$。若 $g,h$ 的阶分别为 $r,s$，则这个有序对回到单位元，当且仅当 $r\mid k$ 且 $s\mid k$。因此
+\begin{equation}
+\operatorname{ord}(g,h)=\operatorname{lcm}(r,s).
+\label{p3:product-element-order}
+\end{equation}
+
+\textbf{循环性的判据与证明。}有限循环群 $G_m,G_n$ 的直积共有 $mn$ 个元素。取两个因子的生成元 $g,h$，则 $(g,h)$ 的阶为 $\operatorname{lcm}(m,n)=mn/\gcd(m,n)$。若 $\gcd(m,n)=1$，它的阶就是 $mn$，故可生成整个直积。反过来，任意元素的两个分量的阶分别整除 $m,n$，故其阶至多为 $\operatorname{lcm}(m,n)$。若 $\gcd(m,n)>1$，这个数小于 $mn$，没有任何元素能生成整个直积。因此
+\begin{equation}
+G_m\times G_n\text{ 是循环群}\quad\Longleftrightarrow\quad\gcd(m,n)=1.
+\label{p3:cyclic-product}
+\end{equation}
+
+\textbf{逐项核对。}A：17 与 11 互质，循环。B：17、11、5 两两互质，取三个生成元构成的元素，其阶为 $17\cdot11\cdot5$，循环。C：$33=3\cdot11$，与 17 互质，循环。D：$22=2\cdot11$、$33=3\cdot11$，最大公因数为 11，不循环。E：$49=7^2$、$121=11^2$ 互质，循环。故选 D，你关于 22 和 33 不互质的判断是正确的。
+
+\textbf{本题的数量检查。}$|G_{22}\times G_{33}|=726$，但任意元素的阶至多为 $\operatorname{lcm}(22,33)=66$，所以不可能有阶为 726 的生成元。最小例子是 $G_2\times G_2$：虽然有 4 个元素，每个非单位元素的阶却都是 2，因此它不同构于 $G_4$。多个有限循环群的直积循环，当且仅当各因子的阶两两互质；仅有所有阶数的总 gcd 为 1 不够。
+
+\subsection{55. 整数加法群的子群与整除：E（答对但不确定）}
+\label{p3:q55}
+\textbf{原题（Original problem）}
+
+Let $p$ and $q$ be distinct primes. There is a proper subgroup $J$ of the additive group of integers which contains exactly three elements of the set $\{p,p+q,pq,p^q,q^p\}$. Which three elements are in $J$?
+\begin{enumerate}[label=(\Alph*)]
+\item $pq,p^q,q^p$
+\item $p+q,pq,p^q$
+\item $p,p+q,pq$
+\item $p,p^q,q^p$
+\item $p,pq,p^q$
+\end{enumerate}
+\textbf{名词解释。}distinct primes：不同的素数，所以 $\gcd(p,q)=1$；additive group of integers：整数在加法运算下组成的群 $(\mathbb Z,+)$；proper subgroup：真子群，即子群但不等于整个群；exactly three：恰好三个，多一个或少一个都不行。注意 $p^q$ 是 $p$ 的 $q$ 次幂，不是乘积 $pq$。
+
+\textbf{先回顾子群。}加法子群 $J\subseteq\mathbb Z$ 必须包含 0，且 $a,b\in J$ 时 $a-b\in J$；因此可以做任意整数倍和整数线性组合。整数加法群的每个子群都形如
+\[
+n\mathbb Z=\{nk:k\in\mathbb Z\},\qquad n\ge0.
+\]
+若子群不是 $\{0\}$，取其中最小的正整数 $n$；对任意 $a\in J$ 作带余除法 $a=kn+r$、$0\le r<n$，则 $r=a-kn\in J$。最小性迫使 $r=0$，故每个元素均为 $n$ 的倍数；反向由加法封闭得到所有 $n$ 的倍数均在 $J$。这就证明上述结论。本题子群含有三个正整数，因此非零，又是真子群，所以 $J=n\mathbb Z$ 且 $n\ge2$。
+
+\textbf{先构造 E。}取 $J=p\mathbb Z$。那么 $p,pq,p^q$ 都是 $p$ 的倍数，因此在 $J$ 中；$p+q$ 除以 $p$ 的余数与 $q$ 相同，不为零；$q^p$ 也不被 $p$ 整除。因此恰好包含 $p,pq,p^q$，E 可行。
+
+\textbf{为什么别的三元组合不行？}若一个整数加法子群同时含 $a,b$，则也含 $\gcd(a,b)$，因为贝祖等式给出 $ua+vb=\gcd(a,b)$。若这个 gcd 为 1，就含 1，进而含所有整数，与真子群矛盾。A 中 $p^q,q^p$ 互质；B 中 $p+q,pq$ 互质；C 中 $p,p+q$ 互质；D 中 $p,q^p$ 互质。因此 A--D 都会强迫 $J=\mathbb Z$，均不可能，只有 E 正确。
+
+\textbf{一个数值例子。}令 $p=2,q=3$，原集合成为 $\{2,5,6,8,9\}$。真子群 $2\mathbb Z$ 恰含其中的 $2,6,8$。若同时含 8 和 9，则也含 $9-8=1$，不再是真子群。
+
+\textbf{与上一题的区别。}整数加法群中由整数 $a,b$ 生成的子群是 $\gcd(a,b)\mathbb Z$；它们的倍数集合之交是 $a\mathbb Z\cap b\mathbb Z=\operatorname{lcm}(a,b)\mathbb Z$（$a,b>0$）。生成子群用 gcd，交集用 lcm，直积元素的阶用 lcm，不能仅凭题目里出现两个整数就选同一个公式。
+
+\subsection{56. 导集、闭包与反例：B}
+\label{p3:q56}
+\textbf{原题（Original problem）}
+
+For a subset $S$ of a topological space $X$, let $\operatorname{cl}(S)$ denote the closure of $S$ in $X$, and let $S'=\{x:x\in\operatorname{cl}(S-\{x\})\}$ denote the derived set of $S$. If $A$ and $B$ are subsets of $X$, which of the following statements are true?
+\begin{enumerate}[label=\Roman*.]
+\item $(A\cup B)'=A'\cup B'$.
+\item $(A\cap B)'=A'\cap B'$.
+\item If $A'$ is empty, then $A$ is closed in $X$.
+\item If $A$ is open in $X$, then $A'$ is not empty.
+\end{enumerate}
+(A) I and II only \quad (B) I and III only \quad (C) II and IV only \quad (D) I, II, and III only \quad (E) I, II, III, and IV.
+
+\textbf{名词解释。}closure：闭包；derived set：导集，即全部聚点组成的集合，这里的撇号不是求导；accumulation point / limit point：聚点；neighborhood：邻域；empty：空的。聚点不要求属于原集合。
+
+\textbf{先用邻域理解定义。}$x\in\operatorname{cl}(S)$，指每个包含 $x$ 的开邻域都与 $S$ 相交；$x\in S'$，指每个包含 $x$ 的开邻域都与 $S\setminus\{x\}$ 相交，不能仅靠 $x$ 自己证明它是聚点。与此相对，$x\in S$ 若有一个邻域只在 $x$ 处碰到 $S$，则称为孤立点。例如 $S=\{0\}\cup\{1/n:n\ge1\}$ 在通常实数拓扑中有 $S'=\{0\}$，而每个 $1/n$ 都是孤立点。
+
+\textbf{I 正确。}若 $x\in A'$，则每个邻域都碰到 $A\setminus\{x\}$，自然也碰到 $(A\cup B)\setminus\{x\}$，故 $A'\cup B'\subseteq(A\cup B)'$。反向用逆否：若 $x\notin A'\cup B'$，则存在开邻域 $U,V$ 分别不碰 $A\setminus\{x\}$、$B\setminus\{x\}$。开邻域 $U\cap V$ 就不碰 $(A\cup B)\setminus\{x\}$，所以 $x\notin(A\cup B)'$。两边包含得到等号。
+
+\textbf{II 错误，你的反例成立。}取 $X=\mathbb R$ 配通常拓扑，$A=\mathbb Q$、$B=\mathbb R\setminus\mathbb Q$。两者不交，所以 $(A\cap B)'=\varnothing'=\varnothing$。但任意实数的每个开区间邻域都包含\emph{其他}有理数及\emph{其他}无理数，故 $A'=B'=\mathbb R$，从而 $A'\cap B'=\mathbb R$。因此左边空、右边全空间，不相等。一般只有 $(A\cap B)'\subseteq A'\cap B'$：分别能在邻域内找到 $A$ 的点和 $B$ 的点，不表示能找到同时属于二者的点。
+
+\textbf{III 正确。}任何拓扑空间中都有
+\begin{equation}
+\operatorname{cl}(A)=A\cup A'.
+\label{p3:closure-derived}
+\end{equation}
+证明：$A\subseteq\operatorname{cl}(A)$，$A'\subseteq\operatorname{cl}(A)$。反过来，若 $x\in\operatorname{cl}(A)$ 且 $x\notin A$，则 $A\setminus\{x\}=A$，故 $x\in\operatorname{cl}(A\setminus\{x\})$，即 $x\in A'$。因此 $A'=\varnothing$ 蕴含 $\operatorname{cl}(A)=A$，所以 $A$ 闭。不要反过来理解成“闭集的导集一定为空”；例如 $[0,1]'=[0,1]$。
+
+\textbf{IV 错误，你给的空集反例足够。}取 $A=\varnothing$；空集在任何拓扑空间中都既开又闭，而且 $A'=\varnothing$。所以“开就必有聚点”不成立。甚至补充非空也未必对：在离散拓扑中，单点集开，但没有聚点。最终只有 I、III 正确，选 B。
+
+\textbf{记忆。}有限并的导集可分配；交集只有包含关系。$A$ 闭等价于 $A'\subseteq A$，并非 $A'=\varnothing$。注意这些结论在本题给定的导集定义下成立，不需要先假设 $X$ 是通常的欧氏空间。
+
+\subsection{59. 由两个有限子群生成的群的阶：A（答对但不确定）}
+\label{p3:q59}
+\textbf{原题（Original problem）}
+
+Two subgroups $H$ and $K$ of a group $G$ have orders 12 and 30, respectively. Which of the following could NOT be the order of the subgroup of $G$ generated by $H$ and $K$?
+
+(A) 30 \quad (B) 60 \quad (C) 120 \quad (D) 360 \quad (E) Countable infinity.
+
+\textbf{名词解释。}subgroup generated by $H$ and $K$：由 $H,K$ 生成的子群，记作 $L=\langle H\cup K\rangle$，即包含二者的最小子群，其元素是来自 $H,K$ 的有限乘积；could NOT：不可能；countable infinity：可数无限，即元素可按自然数编号。这里不是问 $H\cap K$，也不是问某一个直积元素的阶。
+
+\textbf{先用拉格朗日定理。}因为 $H,K$ 都是 $L$ 的子群，若 $L$ 有限，则
+\[
+12\mid|L|,\qquad30\mid|L|,
+\qquad\text{故}\quad\operatorname{lcm}(12,30)=60\mid|L|.
+\]
+30 不是 12 的倍数，因此不可能；选 A。你的 lcm 思路抓住了必要条件，但结论应是“有限时阶数必须是 60 的倍数”，不是“一定恰好等于 60”。
+
+\textbf{为什么其余选项确实可能？}60 可以取循环群 $C_{60}=\langle g\rangle$，其中 $H=\langle g^5\rangle$ 的阶为 12，$K=\langle g^2\rangle$ 的阶为 30；由于 $g=g^5(g^2)^{-2}$，二者生成整个 $C_{60}$。
+
+120、360 可以用二面体群给出具体构造。设 $D_N=\langle r,s:r^N=s^2=e,\ srs=r^{-1}\rangle$，它是正 $N$ 边形的对称群，\emph{阶为 $2N$}。当 $N=60$ 或 $180$ 时，令
+\[
+H=\langle r^{N/6},s\rangle,\qquad K=\langle r^{N/15},rs\rangle.
+\]
+$H$ 有 6 个旋转和 6 个反射，阶为 12；$K$ 有 15 个旋转和 15 个反射，阶为 30。二者合起来含有 $s$、$rs$，故含 $(rs)s=r$，于是生成整个 $D_N$，给出阶为 120 和 360 的例子。这些构造用于核实选项；考场上先用整除关系排除 A 即可。
+
+\textbf{可数无限也可能。}标准例子是自由积 $C_{12}*C_{30}$，其中自然包含阶为 12 和 30 的两个循环子群。直观上，其元素可以写成来自两个因子的非单位元素交替排列的有限单词；除了各因子内部的关系，不另加交换等关系。若 $a,b$ 分别是两个因子的生成元，则 $(ab)^k$（$k=1,2,\ldots$）是互不相同的约化单词，因此群无限；而有限字母表上的有限单词总共可数，所以它是可数无限群。这里认识这种可能性即可，不必为本题系统学习自由积。
+
+\textbf{与直积题区分。}第 \ref{p3:q48} 题中，$(g,h)$ 是一个\emph{直积元素}，它的阶精确等于两个分量阶的 lcm。本题的 $L$ 允许 $H,K$ 的元素交替相乘，没有预设这些元素彼此交换，因此不能直接套直积公式。若已知 $G$ 是阿贝尔群，则 $L=HK$ 且 $|L|=|H||K|/|H\cap K|$；一般群中 $HK$ 未必是子群，不能把这个集合的大小直接当作 $|L|$。
+
+\subsection{62. 下限拓扑、Hausdorff、紧性和连通性：B}
+\label{p3:q62}
+\textbf{原题（Original problem）}
+
+Let $R$ be the set of real numbers with the topology generated by the basis $\{[a,b):a<b,\text{ where }a,b\in R\}$. If $X$ is the subset $[0,1]$ of $R$, which of the following must be true?
+\begin{enumerate}[label=\Roman*.]
+\item $X$ is compact.
+\item $X$ is Hausdorff.
+\item $X$ is connected.
+\end{enumerate}
+(A) I only \quad (B) II only \quad (C) III only \quad (D) I and II \quad (E) II and III.
+
+\textbf{先说明什么是拓扑。}在集合 $Y$ 上指定一族子集 $\tau$ 作为开集，要求：$\varnothing,Y\in\tau$；任意多个开集之并仍开；有限多个开集之交仍开。集合连同这种开集规则称为拓扑空间 $(Y,\tau)$。所以开集不是由集合本身的形状决定的；同一个 $\mathbb R$ 配上不同拓扑，可以有不同的开集、连续性、紧性和连通性。
+
+\textbf{什么是基？}一族基本开集构成基，意思是所有开集都由基本开集任意取并得到。本题以左闭右开的 $[a,b)$ 为基本开集，称下限拓扑（lower limit topology），实数集合配此拓扑称 Sorgenfrey line。虽然 $[a,b)$ 在通常实数拓扑中不是开集，但在本题中它按定义就是开集；不能把书写中的方括号直接等同于拓扑意义上的闭集。
+
+\textbf{子空间拓扑。}题目中的 $X=[0,1]$ 继承此拓扑：$U\subseteq X$ 在 $X$ 中开，当且仅当可写成 $U=X\cap O$，其中 $O$ 是原空间中的开集。例如 $\{1\}=X\cap[1,2)$，因此 $\{1\}$ 在 $X$ 中开；这与通常的闭区间拓扑不同。
+
+\textbf{II 正确：Hausdorff 的定义与验证。}Hausdorff（豪斯多夫，或 $T_2$）要求任意两个不同的点都能被不相交的开邻域分开：若 $x\ne y$，则存在开集 $U,V$，使
+\[
+x\in U,\quad y\in V,\quad U\cap V=\varnothing.
+\]
+任取 $x<y$，可直接取 $U=[x,y)$、$V=[y,y+1)$；它们都是原空间的开集，不相交且分别包含 $x,y$。与 $X$ 取交后仍是所需的子空间开邻域，所以 $X$ 是 Hausdorff。通常的度量空间都 Hausdorff，但满足 Hausdorff 不意味着一定在使用通常的欧氏拓扑。
+
+\textbf{I 错误：用开覆盖证明不紧。}compact（紧）的定义是每个开覆盖都有有限子覆盖。考虑 $X$ 的开集族
+\[
+\mathcal U=\{[0,1-1/n):n=2,3,\ldots\}\cup\{\{1\}\}.
+\]
+每个 $x<1$ 都小于某个 $1-1/n$，所以这些半开区间覆盖 $[0,1)$；单点集 $\{1\}$ 覆盖最后的端点，因此是开覆盖。但有限选取时，令其中最大的下标为 $N$，所选区间的并至多为 $[0,1-1/N)$；再加上 $\{1\}$ 仍漏掉 $[1-1/N,1)$。因此没有有限子覆盖，$X$ 不紧。若一个半开区间都没选，更不可能覆盖。欧氏空间的“闭且有界当且仅当紧”只适用于通常拓扑，不能不检查拓扑就套到这里。
+
+\textbf{III 错误：构造分离。}connected（连通）指不能写成两个不交、非空的相对开集之并。这里
+\[
+X=[0,1/2)\ \cup\ [1/2,1].
+\]
+第一部分是基本开集与 $X$ 的交；第二部分为 $X\cap[1/2,2)$，也在 $X$ 中开。二者不交且非空，合起来为 $X$，所以 $X$ 不连通。最终只有 II 正确，选 B。
+
+\textbf{可迁移的检查顺序。}先明确“什么集合算开集”，再按定义检查性质：Hausdorff 要把两个点用开邻域分开；不紧可找没有有限子覆盖的开覆盖；不连通可找两个不交非空开集覆盖全空间。不要因为集合写成 $[0,1]$ 就直接认为它紧且连通。
+
+\subsection{本套复习定位}
+\begin{itemize}
+\item 7：补词义 octant；用坐标正负号计数。
+\item 48：循环群直积的阶是因子阶之积，直积中单个元素的阶是分量阶的 lcm；要有生成元，两者必须能相等。
+\item 55：整数加法子群全为 $n\mathbb Z$；真子群不能含 1；贝祖等式可快速排除互质元素同时出现的选项。
+\item 56：你的有理／无理数反例和空集反例都成立；再把有限并公式与闭包公式的证明掌握。
+\item 59：lcm 是有限生成子群阶数的整除约束，不是一般情形的精确阶数；保留可数无限的可能性。
+\item 62：系统补齐拓扑、基、子空间拓扑、Hausdorff、开覆盖紧性、连通的定义，再做非常规拓扑题。
+\end{itemize}
+
 \end{document}
