@@ -993,4 +993,223 @@ X=[0,1/2)\ \cup\ [1/2,1].
 \item 62：系统补齐拓扑、基、子空间拓扑、Hausdorff、开覆盖紧性、连通的定义，再做非常规拓扑题。
 \end{itemize}
 
+\clearpage
+\section{GRE Mathematics 错题与不确定题：Practice 4}
+本套 Form GR8767 共 66 题。按每题题号旁的蓝笔选项再次逐一核对卷末答案表，答对 64 题、错 2 题：17 题选 E，正确答案 C；53 题选 C，正确答案 B。其余 64 题均与答案表一致。本节另收录答对但需要巩固的 55、58、60、64，共整理 6 题；收录数不等于错题数。
+
+\subsection{17. 自定义运算的逆元：分母为零不能漏检：C}
+\label{p4:q17}
+\textbf{原题（Original problem）}
+
+Let $*$ be the binary operation on the rational numbers given by $a*b=a+b+2ab$. Which of the following are true?
+\begin{enumerate}[label=\Roman*.]
+\item $*$ is commutative.
+\item There is a rational number that is a $*$-identity.
+\item Every rational number has a $*$-inverse.
+\end{enumerate}
+(A) I only \quad (B) II only \quad (C) I and II only \quad (D) I and III only \quad (E) I, II, and III.
+
+\textbf{名词解释。}binary operation：二元运算，给两个输入得到一个输出；commutative：交换的；$*$-identity：关于本题运算 $*$ 的单位元；$*$-inverse：关于 $*$ 的逆元。单位元与逆元必须按新运算求，不能自动当成普通乘法的 1 和倒数。
+
+\textbf{错因记录。}实际选 E。已经算出了逆元的候选公式，但没有检查分母为零的 $a=-\frac12$。这是定义域中特殊值遗漏，而非没有掌握逆元的定义。
+
+\textbf{I 正确。}普通有理数加法、乘法交换，所以 $a*b=a+b+2ab=b+a+2ba=b*a$。
+
+\textbf{II 正确。}设单位元为 $e$，要求对所有 $a\in\mathbb Q$，$a*e=a$，即 $e(1+2a)=0$。取 $a=0$ 得 $e=0$；再验证 $a*0=0*a=a$，故单位元是 0。
+
+\textbf{III 错误。}元素 $a$ 的逆元 $b$ 必须满足 $a*b=0$，即
+\[
+a+b+2ab=0\quad\Longleftrightarrow\quad(1+2a)b=-a.
+\]
+只有 $1+2a\ne0$ 时，才能除以它并写成
+\[
+b=-\frac{a}{1+2a}.
+\]
+此时若 $a$ 有理，$b$ 也有理。但当 $a=-\frac12$ 时，对任意 $b\in\mathbb Q$，
+\[
+-\frac12*b=-\frac12+b-b=-\frac12\ne0,
+\]
+因此 $-\frac12$ 没有逆元。只有 I、II 正确，选 C。
+
+\textbf{检查动作。}出现含变量的分母时，把“分母为零”单独列成一类，并确认该值是否在题目定义域中；不能只得到一个形式上的公式就宣布所有元素都有逆元。对本题还可观察 $1+2(a*b)=(1+2a)(1+2b)$：$a=-\frac12$ 对应右端的零因子，恰好解释其不可逆性。
+
+\subsection{53. 多项式空间与零自由度：B}
+\label{p4:q53}
+\textbf{原题（Original problem）}
+
+Let $V$ be the vector space, under the usual operations, of real polynomials that are of degree at most 3. Let $W$ be the subspace of all polynomials $p(x)$ in $V$ such that $p(0)=p(1)=p(-1)=0$. Then $\dim V+\dim W$ is
+
+(A) 4 \quad (B) 5 \quad (C) 6 \quad (D) 7 \quad (E) 8.
+
+\textbf{名词解释。}degree at most 3：次数至多为 3，包含低次多项式及零多项式；usual operations：通常的多项式加法与实数数乘；dimension：维数，即自由参数个数或一组基的元素个数；unique：唯一。
+
+\textbf{错因记录。}实际选 C，把 $\dim W$ 算成了 2。原思路把“唯一解”误当作一维；但唯一解没有任何可自由选择的参数，对应零自由度。在本题这种齐次线性条件下，若只有零多项式一个解，就得到零空间 $\{0\}$，其维数为 0，而不是 1。
+
+\textbf{直接用因式分解。}$V$ 的基为 $1,x,x^2,x^3$，所以 $\dim V=4$。$p$ 在三个不同点 $0,1,-1$ 处为零，故 $x(x-1)(x+1)$ 整除 $p$。由于次数至多为 3，必有
+\[
+p(x)=c\,x(x-1)(x+1)=c(x^3-x),\qquad c\in\mathbb R.
+\]
+因此 $W=\operatorname{span}\{x^3-x\}$，只有一个自由参数，$\dim W=1$，故所求为 $4+1=\boxed5$，选 B。
+
+\textbf{也可直接求系数。}写 $p(x)=a_0+a_1x+a_2x^2+a_3x^3$，则
+\[
+a_0=0,\qquad a_1+a_2+a_3=0,\qquad -a_1+a_2-a_3=0.
+\]
+后两式相加得 $a_2=0$，再得 $a_1=-a_3$，所以只剩 $a_3$ 一个自由参数。
+
+\textbf{纠正维数的直觉。}一个含任意实参数的直线有无穷多个点，但维数为 1；只有零向量的子空间只含一个点，维数为 0。条件数与维数的关系是“维数减去\emph{独立线性约束的个数}”，不能每看到一个条件就机械减 1，重复条件不会继续降维。若次数至多为 $n$ 的多项式被要求在 $k$ 个不同实点为零，则 $k\le n+1$ 时这 $k$ 个取值约束独立，满足条件的空间维数为 $n+1-k$；若 $k\ge n+1$，只有零多项式，维数为 0。
+
+\subsection{55. Hessian 判别：先看行列式，再看符号：C（答对后巩固）}
+\label{p4:q55}
+\textbf{原题（Original problem）}
+
+Let $f(x,y)=x^3+y^3+3xy$ for all real $x$ and $y$. Then there exist distinct points $P$ and $Q$ such that $f$ has a
+\begin{enumerate}[label=(\Alph*)]
+\item local maximum at $P$ and at $Q$
+\item saddle point at $P$ and at $Q$
+\item local maximum at $P$ and a saddle point at $Q$
+\item local minimum at $P$ and a saddle point at $Q$
+\item local minimum at $P$ and at $Q$
+\end{enumerate}
+\textbf{名词解释。}Hessian matrix：海森矩阵，即由二阶偏导数组成的矩阵；critical/stationary point：驻点；local maximum/minimum：局部极大／极小值；saddle point：鞍点，附近既有更大值也有更小值。
+
+\textbf{作答记录。}开始不确定，后来独立用二阶偏导判别做对，选 C。记忆中“行列式小于零是鞍点”是正确的；“行列式大于零”还需检查另一个符号，才能区分极大和极小。
+
+\textbf{第一步：找出全部驻点。}
+\[
+f_x=3x^2+3y=0,\qquad f_y=3y^2+3x=0.
+\]
+由 $y=-x^2$，代入第二式得 $x^4+x=0$，即 $x(x^3+1)=0$。实数解只有 $x=0,-1$，相应驻点为 $(0,0)$ 和 $(-1,-1)$。
+
+\textbf{第二步：计算 Hessian。}
+\[
+H_f(x,y)=\begin{pmatrix}6x&3\\3&6y\end{pmatrix},
+\qquad D=f_{xx}f_{yy}-f_{xy}^2=36xy-9.
+\]
+在 $(0,0)$，$D=-9<0$，故为鞍点。在 $(-1,-1)$，$D=27>0$ 且 $f_{xx}=-6<0$，故为严格局部极大值点。于是取 $P=(-1,-1)$、$Q=(0,0)$，选择 C；没有局部极小值，也没有两个局部极大值或两个鞍点，故其余选项均错。
+
+\textbf{完整判别表。}对二元 $C^2$ 函数的驻点：
+\[
+\begin{array}{c|c}
+\text{条件}&\text{结论}\\\hline
+D<0&\text{鞍点}\\
+D>0,\ f_{xx}>0&\text{严格局部极小值}\\
+D>0,\ f_{xx}<0&\text{严格局部极大值}\\
+D=0&\text{此判别法不能下结论}
+\end{array}
+\]
+原理来自二阶 Taylor 展开中的二次型：Hessian 正定时向任何方向作足够小的非零移动都会增大，负定时都会减小，不定时则有的方向增大、有的方向减小。若 $D=0$，不能说一定没有极值；例如 $x^4+y^4$ 在原点有极小值，但 $x^4-y^4$ 在原点是鞍点，两者的 Hessian 在原点都为零。
+
+\subsection{58. 解析函数全取实值必为常数：B（答对但不确定）}
+\label{p4:q58}
+\textbf{原题（Original problem）}
+
+If $f(z)$ is an analytic function that maps the entire finite complex plane into the real axis, then the imaginary axis must be mapped onto
+\begin{enumerate}[label=(\Alph*)]
+\item the entire real axis
+\item a point
+\item a ray
+\item an open finite interval
+\item the empty set
+\end{enumerate}
+\textbf{名词解释。}analytic：解析；entire finite complex plane：整个复平面 $\mathbb C$（不包括扩充复平面的无穷远点），不是说定义域有界；real axis：实轴；imaginary axis：虚轴。``maps ... into the real axis'' 表示所有输出都在实轴上，不要求覆盖整条实轴。
+
+\textbf{作答记录。}你猜测 Taylor 展开只有常数项非零，从而虚轴也被映成一个点，结论正确。需要补上的关键是：为什么全部复数输入的输出均为实数，会迫使函数常值。
+
+\textbf{用 Cauchy--Riemann 方程证明。}写 $z=x+iy$、$f(z)=u(x,y)+iv(x,y)$。全取实值意味着 $v(x,y)=0$ 对所有 $x,y$ 成立，因此 $v_x=v_y=0$。解析性给出
+\[
+u_x=v_y=0,\qquad u_y=-v_x=0.
+\]
+于是 $u$ 沿任何水平或竖直线段都不变；任意两个平面点可用这样的线段连接，所以 $u$ 在整个复平面恒定。故 $f\equiv c$，其中 $c\in\mathbb R$，虚轴的像就是单点 $\{c\}$，选 B，其他选项均非单点像。
+
+\textbf{与你的幂级数想法衔接。}整函数在原点的 Taylor 展开为 $f(z)=a_0+a_1z+a_2z^2+\cdots$。上面已证明 $f$ 恒定，因此确有 $a_0=c\in\mathbb R$，$a_n=0$（$n\ge1$）。不过不能只说“系数都取实数，所以函数全取实值”：例如 $f(z)=z$ 的系数都是实数，却有 $f(i)=i$。本题要求对\emph{所有复数输入}均取实值，远强于“实轴输入时输出实数”。另一个快速证明是开映射定理：非恒定解析函数把区域映成开集，而实轴不含复平面中的任何非空开集。
+
+\subsection{60. 二项分布尾概率：正态近似比逐项估算更快：C}
+\label{p4:q60}
+\textbf{原题（Original problem）}
+
+A fair die is tossed 360 times. The probability that a six comes up on 70 or more of the tosses is
+\begin{enumerate}[label=(\Alph*)]
+\item greater than 0.50
+\item between 0.16 and 0.50
+\item between 0.02 and 0.16
+\item between 0.01 and 0.02
+\item less than 0.01
+\end{enumerate}
+\textbf{名词解释。}fair die：公平六面骰子；70 or more：至少 70 次，包含恰好 70；tail probability：尾概率；normal approximation：正态近似；continuity correction：连续性修正。
+
+\textbf{作答记录。}选 C 正确。原方法先近似成均值为 60 的 Poisson 分布，再估计相邻概率项之比，计算较长且不易确认。本题可直接对二项分布使用正态近似。
+
+\textbf{第一步：确定准确分布及方差。}令 $X$ 为出现 6 的次数，则
+\[
+X\sim\operatorname{Bin}(360,1/6),\qquad
+\mu=np=60,\qquad \sigma^2=np(1-p)=50,
+\qquad \sigma=\sqrt{50}\approx7.07.
+\]
+这里标准差不是均值 60，也不是 Poisson 近似给出的 $\sqrt{60}$。
+
+\textbf{第二步：标准化并估算尾部。}$np=60$、$n(1-p)=300$ 都足够大，适合二项分布的正态近似。做连续性修正时，把 $X\ge70$ 换为连续变量 $Y\ge69.5$，其中 $Y\sim N(60,50)$。所以
+\begin{equation}
+\mathbb P(X\ge70)
+\approx1-\Phi\!\left(\frac{69.5-60}{\sqrt{50}}\right)
+=1-\Phi(1.34)\approx0.090.
+\label{p4:binomial-normal}
+\end{equation}
+它介于 0.02 和 0.16 之间，选 C。
+
+\textbf{考场上不需要精确查表。}正态分布中高于均值 1 个标准差的右尾约为 0.159，高于均值 2 个标准差的右尾约为 0.0228。本题阈值约在均值以上 1.34 个标准差处，右尾介于二者之间，而且明显远离 0.02、0.16 两个边界，因此足以选 C。不作连续性修正时得到 $10/\sqrt{50}\approx1.41$，仍能判断同一选项。
+
+\textbf{数值核验与适用范围。}精确二项分布求和为
+\[
+\sum_{k=70}^{360}\binom{360}{k}(1/6)^k(5/6)^{360-k}
+\approx0.0914018,
+\]
+正态近似的 0.08955 与之接近。Poisson 近似主要适用于 $n$ 大且 $p$ 小的情形；这里 $p=1/6$ 并非特别小，且它把方差 50 换成 60，尾部精度可能不如直接正态近似。正态近似是近似判断，不是本题精确等式。
+
+\subsection{64. 紧空间的连续满射像：C（答对，但直觉中的条件需要修正）}
+\label{p4:q64}
+\textbf{原题（Original problem）}
+
+Let $S$ be a compact topological space, let $T$ be a topological space, and let $f$ be a function from $S$ onto $T$. Of the following conditions on $f$, which is the weakest condition sufficient to ensure the compactness of $T$?
+\begin{enumerate}[label=(\Alph*)]
+\item $f$ is a homeomorphism.
+\item $f$ is continuous and $1$--$1$.
+\item $f$ is continuous.
+\item $f$ is $1$--$1$.
+\item $f$ is bounded.
+\end{enumerate}
+\textbf{名词解释。}compact：紧；onto：满射，保证 $f(S)=T$；weakest sufficient condition：足以保证结论、但附加要求最少的条件；$1$--$1$：单射；homeomorphism：同胚，即连续双射且逆映射也连续。紧不是“景”，闭集不是“B 集”。
+
+\textbf{作答记录。}你回忆起“紧集的连续像仍紧”，据此选 C，结论正确。需要修正的是后续用“闭集的连续像仍闭”和“连续就不会无界”解释它的思路：这两个说法一般都不成立，不能作为此题的证明。
+
+\textbf{最直接的定理。}任何拓扑空间中的紧集，经连续映射得到的像仍紧。本题还有满射条件，所以 $T=f(S)$，从而只需 $f$ 连续，无需单射、无需逆映射连续，选 C。A、B 也足够，但比 C 要求更多，不是最弱的充分条件。
+
+\textbf{用开覆盖给出完整证明。}任取 $T$ 的开覆盖 $\{U_\alpha\}$。因为 $f$ 连续，$f^{-1}(U_\alpha)$ 在 $S$ 中开；又因为这些 $U_\alpha$ 覆盖 $T$，它们的逆像覆盖 $S$。由 $S$ 紧，可取有限多个，满足
+\[
+S=f^{-1}(U_{\alpha_1})\cup\cdots\cup f^{-1}(U_{\alpha_m}).
+\]
+任取 $t\in T$，满射性保证存在 $s\in S$ 使 $f(s)=t$；这个 $s$ 落在上述某个逆像中，所以 $t$ 落在相应的 $U_{\alpha_j}$ 中。故
+\[
+T=U_{\alpha_1}\cup\cdots\cup U_{\alpha_m}.
+\]
+每个开覆盖都有有限子覆盖，正是 $T$ 紧的定义。这里使用的是\emph{开集的逆像开}，并未使用“闭集的像闭”。
+
+\textbf{修正直觉一：连续映射不一定把闭集映成闭集。}例如 $f:\mathbb R\to\mathbb R$、$f(x)=e^x$ 连续，定义域 $\mathbb R$ 是闭集，但像 $(0,\infty)$ 在 $\mathbb R$ 中不闭。正确的定义是连续映射使闭集的\emph{逆像}闭，也使开集的\emph{逆像}开。若定义域紧而目标空间是 Hausdorff，则连续像紧且因而闭；本题没有假设目标空间 Hausdorff，也不需要它。
+
+\textbf{修正直觉二：闭集上的连续函数可以无界。}例如 $f(x)=x$ 在闭集 $\mathbb R$ 上连续且无界。闭集可以无界；“闭”不等于“紧”。即使定义域有界，若缺少紧性也可能无界，例如 $f(x)=1/x$ 在 $(0,1)$ 上连续且无界。在每个定义域内的点都连续，已经足够称连续；不需要在不属于定义域的点 0 处连续。另一方面，开集上的连续函数也可以有界，例如 $\sin x$ 在 $\mathbb R$ 上有界。
+
+\textbf{数分中的正确联系。}在通常欧氏空间 $\mathbb R^n$ 中，Heine--Borel 定理说“紧等价于闭且有界”，而不是只有闭就紧。紧集上的实值连续函数确实有界并能达到最大、最小值。但在一般拓扑空间中未必有距离或“有界”的概念，应直接使用开覆盖定义与连续像定理。
+
+\textbf{D、E 为什么不够？}D 只要求单射，本题已知满射所以得到双射，但双射不保证连续。取 $S=[0,1]$ 配通常拓扑、$T$ 为同一集合配离散拓扑，恒等映射是双射；$S$ 紧，$T$ 却不紧，因为所有单点集构成没有有限子覆盖的开覆盖。E 的“有界”在一般拓扑空间中甚至没有统一定义；即使限于实值函数也不足够。例如 $S=[0,1]$、$T=(0,1)$，令 $f(x)=x$（$0<x<1$），并令 $f(0)=f(1)=1/2$，得到有界满射，但 $T$ 不紧。
+
+\subsection{本套检查动作与知识定位}
+\begin{itemize}
+\item 17：先写出逆元满足的方程，除以含变量表达式前单独检查其零点；本题遗漏 $a=-1/2$。
+\item 53：维数数的是自由参数，不是点的个数；唯一零解的解空间维数为 0。
+\item 55：先求所有驻点；$D<0$ 为鞍点，$D>0$ 时再看 $f_{xx}$ 的正负，$D=0$ 不下结论。
+\item 58：所有复数输入的输出均实值，加上解析性，迫使常值；这不同于仅在实轴上实值。
+\item 60：二项分布先算 $np$ 和 $np(1-p)$；阈值离均值几个标准差，通常足以判断宽区间选项。
+\item 64：保留正确结论“紧集的连续像紧”，纠正“连续像保持闭集”的误用；连续性控制开闭集的逆像。
+\end{itemize}
+
 \end{document}
