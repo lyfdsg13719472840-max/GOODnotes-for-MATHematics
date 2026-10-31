@@ -20,6 +20,148 @@
 \maketitle
 \tableofcontents
 \clearpage
+
+\section{每日晨读：群论、环的基础与复变留数}
+\label{review:morning}
+本节先于各套错题，供晨读。目标是看到题目就能识别适用条件，而不是只背公式；特别区分一般群与循环群、加法群与乘法群、极点阶数与留数。MathSub 的题面勘误见 \hyperref[ms:q52]{52题}、\hyperref[ms:q62]{62题}。
+
+\subsection{群论与数论：英文、性质及条件}
+\label{review:groups}
+\textbf{基本词义。}group：群；abelian/commutative：交换的；closure：封闭性；identity：单位元；inverse：逆元；order of a group：群阶 $|G|$，即元素个数；order of an element：元素阶 $\operatorname{ord}(a)$，即使 $a^m=e$ 的最小正整数 $m$，不存在则为无限阶；cyclic：循环的；generator：生成元；subgroup：子群；proper subgroup：真子群 $H\ne G$；trivial subgroup：平凡子群 $\{e\}$；index：指数 $[G:H]$，即陪集个数；coprime/relatively prime：互素。元素本身的数值不等于它的阶。
+
+\textbf{群与子群判别。}群运算封闭、满足结合律、有单位元且每个元素有逆元，不要求交换。非空子集 $H\subseteq G$ 是子群，当且仅当对所有 $x,y\in H$ 有 $xy^{-1}\in H$；加法记号下是 $x-y\in H$。有限非空子集若对乘法封闭，则自动为子群；无限子集不能这样推，例如正整数对加法封闭，却不是整数加法群的子群。
+
+\textbf{元素阶与模运算。}若 $\operatorname{ord}(a)=n<\infty$，则
+\begin{equation}
+a^k=e\iff n\mid k,\qquad a^r=a^s\iff r\equiv s\pmod n,\qquad
+\operatorname{ord}(a^k)=\frac{n}{\gcd(n,k)}.
+\label{review:order-power}
+\end{equation}
+最后一个公式来自 $(a^k)^t=e\iff n\mid kt$，取满足条件的最小正整数 $t$。例如 $a$ 的阶为30，则 $a^{12}$ 的阶为5。逆元 $a^{-1}$ 与 $a$ 的阶相同。
+
+\textbf{拉格朗日定理（Lagrange）。}有限群中
+\begin{equation}
+|G|=[G:H]|H|,\qquad |H|\mid|G|,\qquad \operatorname{ord}(a)\mid|G|,\qquad a^{|G|}=e.
+\label{review:lagrange}
+\end{equation}
+方向不能反过来：$d\mid|G|$ 不保证存在 $d$ 阶子群，更不保证存在 $d$ 阶元素。见 \hyperref[ms:q38]{MathSub 38题}。
+
+\textbf{循环群的子群。}若 $G=\langle a\rangle$、$|G|=n$，则每个子群都循环；对每个正因子 $d\mid n$，恰好有一个 $d$ 阶子群 $\langle a^{n/d}\rangle$。元素 $a^k$ 是生成元当且仅当 $\gcd(n,k)=1$，故生成元共有 $\varphi(n)$ 个。对每个 $d\mid n$，阶恰为 $d$ 的元素有 $\varphi(d)$ 个，而不是只有一个。若 $n=\prod p_j^{\alpha_j}$，子群总数为 $\prod(\alpha_j+1)$，其中
+\[
+\varphi(n)=n\prod_{p\mid n}(1-1/p).
+\]
+例如 $C_{12}$ 的6阶子群只有 $\langle a^2\rangle$ 一个，6阶元素却有 $a^2,a^{10}$ 两个。素数阶群必循环；$p^2$ 阶群必交换，但可能是 $C_{p^2}$ 或 $C_p\times C_p$，不一定循环。
+
+\textbf{哪些子群一定存在？}柯西定理（Cauchy）：素数 $p\mid|G|$，则有 $p$ 阶元素，因而有 $p$ 阶子群。Sylow：若 $|G|=p^km$ 且 $p\nmid m$，则存在 $p^k$ 阶子群；这类子群个数 $n_p$ 满足 $n_p\mid m$、$n_p\equiv1\pmod p$，且 $n_p=1$ 当且仅当该 Sylow 子群正规。normal subgroup：正规子群，定义为对所有 $g\in G$ 有 $gHg^{-1}=H$；指数2的子群必正规。例如阶60保证有2、3、4、5阶子群，不能仅靠这些定理保证有6阶子群。
+
+\textbf{直积与最小公倍数。}
+\begin{equation}
+\operatorname{ord}((a,b))=\operatorname{lcm}(\operatorname{ord}(a),\operatorname{ord}(b)),\qquad
+C_m\times C_n\text{ 循环}\iff\gcd(m,n)=1.
+\label{review:direct-product}
+\end{equation}
+群阶是分量群阶的乘积，单个元素的阶却是分量元素阶的 lcm。例如 $C_{22}\times C_{33}$ 群阶726，元素阶至多66，故不循环。多个有限循环群的直积循环，当且仅当各群阶两两互素。中国剩余定理给出互素时 $\mathbb Z_{mn}\cong\mathbb Z_m\times\mathbb Z_n$（也成立为环同构）。
+
+\textbf{同一群中乘积 $ab$ 的阶。}若 $a,b$ 交换且阶分别为 $m,n$，则 $\operatorname{ord}(ab)\mid\operatorname{lcm}(m,n)$；若进一步 $\gcd(m,n)=1$，则阶为 $mn$。不互素时未必等于 lcm，例如 $b=a^{-1}$。不交换时不能套用：在 $S_3$ 中 $(12),(23)$ 都是2阶，乘积却是3阶。
+
+\textbf{整数子群与贝祖等式。}$(\mathbb Z,+)$ 的子群全部是 $n\mathbb Z$（$n\ge0$）。对正整数 $m,n$，
+\begin{equation}
+\langle m,n\rangle=\gcd(m,n)\mathbb Z,\qquad
+m\mathbb Z\cap n\mathbb Z=\operatorname{lcm}(m,n)\mathbb Z,\qquad
+m\mathbb Z\subseteq n\mathbb Z\iff n\mid m.
+\label{review:integer-subgroups}
+\end{equation}
+贝祖等式说 $\gcd(m,n)=um+vn$，其中 $u,v$ 为整数；所以真子群不能同时包含两个互素整数。数值越大，其倍数集合不一定包含另一集合，要用整除判断。
+
+\textbf{有限循环群中的交与生成。}若 $H,K$ 是同一有限循环群的子群，阶分别为 $r,s$，则 $|H\cap K|=\gcd(r,s)$、$|\langle H\cup K\rangle|=\operatorname{lcm}(r,s)$。一般有限群只能保证共同生成子群的阶是 lcm 的倍数，不能保证等于 lcm。
+
+\textbf{模 $n$ 加法群与乘法群不能混淆。}$(\mathbb Z_n,+)$ 有 $n$ 个元素，单位元是0，元素 $[a]$ 的阶为 $n/\gcd(a,n)$。$\mathbb Z_n^\times$ 则是所有可逆剩余类组成的乘法群，单位元是1，群阶为 $\varphi(n)$；$[a]$ 可逆当且仅当 $\gcd(a,n)=1$。乘法阶是最小的 $k>0$ 使 $a^k\equiv1\pmod n$，不能套加法阶公式。例如模7时2的乘法阶为3。对这个乘法群用拉格朗日定理得到欧拉定理 $a^{\varphi(n)}\equiv1\pmod n$（要求互素）；素数模数时得到费马小定理。
+
+\textbf{同态。}homomorphism：保持运算的映射 $\phi(ab)=\phi(a)\phi(b)$；kernel：核 $\ker\phi=\{a:\phi(a)=e\}$，是正规子群；image：像 $\operatorname{im}\phi$，是目标群的子群。第一同构定理给出 $G/\ker\phi\cong\operatorname{im}\phi$；有限时 $|G|=|\ker\phi|\,|\operatorname{im}\phi|$。所以像的阶同时整除定义域群阶与目标群阶，两阶互素时任何同态都平凡。
+
+\subsection{环：只补做题所需的基本定义}
+\label{review:rings}
+环（ring）的加法构成交换群，乘法结合，且满足左右分配律；乘法不一定交换，不同教材对是否要求单位元约定不同。此处涉及可逆元时使用含幺环，且通常 $1\ne0$。unity/multiplicative identity 是乘法单位元1；unit 却是\textbf{可逆元}，要求存在 $b$ 使 $ab=ba=1$，不是在问有几个单位元。zero divisor 是非零元 $a$，能与某个非零元相乘得到0（非交换时区分左右）；integral domain 是无零因子的非零交换含幺环；field 是每个非零元都可逆的非零交换含幺环；division ring 允许不交换。
+
+双侧理想（two-sided ideal）$I$ 是加法子群，且对所有 $a\in I,r\in R$ 有 $ra,ar\in I$。理想一定含0，但不一定含1；若 $1\in I$，则 $r=r1\in I$，从而 $I=R$。例如 $2\mathbb Z$ 是 $\mathbb Z$ 的理想，不包含1。$\mathbb Z$ 的理想全为 $n\mathbb Z$。通常的理想乘积允许有限和：
+\[
+AB=\left\{\sum_{j=1}^m a_jb_j:a_j\in A,b_j\in B,m\ge1\right\},\qquad
+AB\subseteq A\cap B\subseteq A+B.
+\]
+只允许单个乘积的集合未必是理想，参见 Practice 1 的50题；允许有限和的定义见 \hyperref[ms:q64]{MathSub 64题}。交换含幺环中，真理想 $I$ 极大当且仅当 $R/I$ 是域，素当且仅当 $R/I$ 是整环。域的理想只有零理想和全环。
+
+\subsection{复变：解析性、柯西--黎曼方程与留数的原理}
+\label{review:residues}
+\textbf{英文与基本结论。}holomorphic：全纯，在开区域内处处复可微；analytic：解析，局部可展开为收敛幂级数，一元复分析中二者等价；entire：整函数，在整个 $\mathbb C$ 上全纯；pole：极点；residue：留数；singularity：奇点；counterclockwise：逆时针，取正方向。写 $f=u+iv$，解析函数满足 Cauchy--Riemann 方程
+\begin{equation}
+u_x=v_y,\qquad u_y=-v_x.
+\label{review:cr}
+\end{equation}
+反向使用时，常用充分条件是这些偏导数在邻域存在且连续，并在该点满足方程；仅在一点形式满足方程未必足够。连通开区域上的解析函数若全取实值或模长恒定，必常值；仅在一条实轴或区域边界上成立则不足。非恒定解析函数为开映射；有界整函数必常值（Liouville）；局部解析函数在 $a$ 的 Taylor 系数为 $f^{(n)}(a)/n!$。
+
+\textbf{Taylor 与 Laurent。}若中心 $a$ 也解析，展开只有非负整数次幂。若仅在穿孔圆盘 $0<|z-a|<R$ 解析，则可写
+\begin{equation}
+f(z)=\sum_{n=-\infty}^{\infty}c_n(z-a)^n,\qquad \operatorname{Res}(f,a)=c_{-1}.
+\label{review:laurent}
+\end{equation}
+负次幂部分称主部：无非零负次项时中心可解析延拓；有限个非零负次项、最低次为 $-m$ 时为 $m$ 阶极点；无穷多个非零负次项时为本性奇点。必须在中心附近的穿孔圆盘判断，不能用远离中心的环域展开误判中心。例如 $1/(1-z)$ 在 $|z|<1$ 展开为 $\sum_{n\ge0}z^n$，在 $|z|>1$ 展开为 $-\sum_{n\ge1}z^{-n}$；后者不能用于判断0的奇点类型。
+
+\textbf{为什么只看负一次项？}沿 $z=a+re^{it}$、$0\le t\le2\pi$，
+\[
+\oint_{|z-a|=r}(z-a)^n\,dz=ir^{n+1}\int_0^{2\pi}e^{i(n+1)t}\,dt
+=\begin{cases}2\pi i,&n=-1,\\0,&n\ne-1,\end{cases}
+\]
+其中 $n$ 是整数。逐项积分时只有 $c_{-1}/(z-a)$ 留下。因此逆时针简单闭曲线 $C$ 内只有有限个孤立奇点、曲线上无奇点且其他位置解析时，
+\begin{equation}
+\oint_C f(z)\,dz=2\pi i\sum_{a\text{ 在 }C\text{ 内}}\operatorname{Res}(f,a).
+\label{review:residue-theorem}
+\end{equation}
+原理是挖去奇点周围小圆，在剩余全纯区域应用柯西积分定理，把大边界积分变成各小圆积分之和。顺时针反号；前面若已有 $1/(2\pi i)$，答案直接为留数和；奇点在路径上不能直接套用。
+
+\textbf{简单极点：为什么要除以分母导数？}设 $f=P/Q$，$Q(a)=0$、$Q'(a)\ne0$ 且 $P(a)\ne0$。把分母写成
+\[
+Q(z)=(z-a)H(z),\qquad H(a)=Q'(a).
+\]
+于是 $f(z)=[P(z)/H(z)]/(z-a)$，括号内解析，其常数项为 $P(a)/Q'(a)$。所以
+\begin{equation}
+\operatorname{Res}(P/Q,a)=\frac{P(a)}{Q'(a)}
+=\lim_{z\to a}(z-a)f(z).
+\label{review:simple-residue}
+\end{equation}
+例如 $3/(2z-2)=(3/2)/(z-1)$，留数为 $3/2$；不是令 $z-a=1$，而是提取负一次项系数。$\sin z$ 在 $\pi$ 附近一阶项为 $-(z-\pi)$，所以 $3/\sin z$ 在 $\pi$ 的留数为 $-3$。分子分母同时为零时先约分，可能降阶或成为可去奇点。
+
+\textbf{高阶极点：求导只是提取同一个系数。}若 $f(z)=h(z)/(z-a)^m$，$h$ 在 $a$ 附近解析，则
+\begin{equation}
+\operatorname{Res}(f,a)=\frac{h^{(m-1)}(a)}{(m-1)!}.
+\label{review:higher-residue}
+\end{equation}
+若 $h(a)\ne0$，它确实是 $m$ 阶极点；即使 $h(a)=0$，此系数公式仍成立，但实际阶数可能下降。原因是 $h$ 的 Taylor 展开中 $(m-1)$ 次项除以 $(z-a)^m$ 后，恰变成负一次项。二阶求 $h'(a)$，三阶求 $h''(a)/2!$，四阶求 $h'''(a)/3!$。若分母还有其他因子，必须并入 $h$ 整体求导，例如 $e^z/[(z-a)^4(z-b)]$ 在 $a\ne b$ 处应对 $h=e^z/(z-b)$ 求三阶导，不能只对分子 $e^z$ 求导。
+
+\textbf{最容易混淆的两式。}常数分子 $e/(z-1)^2$ 已经只有负二次项，留数0；但
+\[
+\frac{e^z}{(z-1)^2}
+=\frac{e[1+(z-1)+(z-1)^2/2+\cdots]}{(z-1)^2}
+=\frac e{(z-1)^2}+\frac e{z-1}+\frac e2+\cdots,
+\]
+留数为 $e$。不是负二次项贡献了积分，而是分子的变化产生了负一次项。极点阶数看最负次项；积分只看负一次项；不能看见平方分母就宣布积分0。
+
+\textbf{常用算例。}以下圆均逆时针，均无路径上极点：
+\[
+\begin{array}{c|c|c}
+f(z),\ C&\text{内部留数}&\oint_Cf(z)\,dz\\\hline
+1/(z^2+1),\ |z|=2&1/(2i),\ -1/(2i)&0\\
+1/(z^2+1),\ |z-i|=1&1/(2i)&\pi\\
+(z+2)/(z^2+1),\ |z|=2&1/2-i,\ 1/2+i&2\pi i\\
+(z+1)/(e^z-2),\ |z|=1&(1+\ln2)/2&\pi i(1+\ln2)\\
+e^z/(z-1)^2,\ |z|=2&e&2\pi i e
+\end{array}
+\]
+第四例的分母零点是 $\ln2+2k\pi i$，圆内只有 $\ln2$。三个候选极点的例子：$(z+2)/[(z^2+1)(z-3)]$ 沿 $|z|=2$，只算 $\pm i$，留数分别为 $-1/4\pm i/4$，积分 $-\pi i$。混合阶数例子：$(z+1)/[(z-1)^2(z+2)]$ 在1的留数是 $\left[(z+1)/(z+2)\right]'_{z=1}=1/9$，在 $-2$ 是 $-1/9$；沿 $|z|=3$ 积分0，只包围1则为 $2\pi i/9$。
+
+\textbf{收敛半径的快速联系。}有理函数先消去可去因子，围绕 $a$ 的 Taylor 收敛半径是到最近复极点的距离；不是只找实数奇点。例如 $2z/(z^2+1)$ 围绕 $-1$ 展开，最近极点 $\pm i$ 距离均为 $\sqrt2$，见 \hyperref[ms:q31]{31题}。
+
+\textbf{晨读检查。}群论先查一般群还是循环群、阶是元素阶还是群阶、运算是加法还是乘法；环题分清 unit 与 unity、理想是否含1；留数题先查展开中心、圆内奇点、是否消去、极点阶数，最后取负一次项系数并检查方向和 $2\pi i$。可回看 \hyperref[review:order-power]{幂的阶}、\hyperref[review:direct-product]{直积公式}、\hyperref[review:simple-residue]{简单极点}、\hyperref[review:higher-residue]{高阶极点}。
+\clearpage
 \hypertarget{gre-mathematics-ux9519ux9898ux4e0eux4e0dux786eux5b9aux9898practice-1}{%
 \section{GRE Mathematics 错题与不确定题：Practice
 1}\label{gre-mathematics-ux9519ux9898ux4e0eux4e0dux786eux5b9aux9898practice-1}}
@@ -1212,4 +1354,476 @@ T=U_{\alpha_1}\cup\cdots\cup U_{\alpha_m}.
 \item 64：保留正确结论“紧集的连续像紧”，纠正“连续像保持闭集”的误用；连续性控制开闭集的逆像。
 \end{itemize}
 
+
+\clearpage
+\section{GRE Mathematics 错题与不确定题：MathSub MSDC01}
+\label{ms:start}
+\textbf{卷别与作答背景。}本套为 MathSub 原创第三方模拟卷 MSDC01（2021年9月26日排版），不是 ETS 官方真题；卷面规定170分钟。原始蓝笔选项与卷末答案有20处不同：12、13、14、24、25、27、31、35、36、38、47、50、53、55、57、61、62、64、65、66。这是“与答案表不一致”的数量，不等于逐题审核后的有效错题数；62题的标准答案有实质错误。54题蓝笔未写最终答案，作答者现明确补充实际选D，正确，不计漏答；52、54、56作为答对但不稳或题目待辨析者一并收录，共23题。52题虽与答案表E一致，原题本身也有措辞缺陷，不能视为严格成立。
+
+\textbf{错因记录原则。}以下原因依据本次对话，区分审题、算术、概念、方法及时间不足，不把事后能理解等同于原先已经掌握。作答者反映本套前半段耗时较多，从50多题起优先做有思路的题，最后65、66缺少时间而猜选；后续复习采取约一分钟判断路线、无思路先跳、避免单题持续耗时超过五分钟的策略。65、66保留答案与基础解释，当前不作为优先深入学习方向；31、38等可迁移方法仍应补齐。
+
+\subsection{12. 第五次才获得第三次成功：B}
+\label{ms:q12}
+\textbf{原题。}Brian is playing a crane game where the chance of winning a plush toy is $1/3$ each time. What is the probability that it takes him exactly 5 tries to win 3 plush toys?
+
+(A) $2/81$ \quad (B) $8/81$ \quad (C) $4/243$ \quad (D) $10/243$ \quad (E) $40/243$.
+
+\textbf{词义。}takes exactly 5 tries to win 3：获得第三次成功恰好需要五次尝试；crane game：抓娃娃游戏；plush toy：毛绒玩具。
+
+\textbf{错因。}选E。读题过快，没有把“第三次成功在第五次”作为事件约束。草稿 $\binom53(1/3)^3(2/3)^2$ 实际计算前五次恰好成功三次，允许第三次成功早在第三或第四次；它也不是“前五次至少成功三次”的概率，后者还要加四次、五次成功。
+
+\textbf{解答。}前四次恰好成功两次，第五次成功：
+\[
+\binom42(1/3)^2(2/3)^2(1/3)=\boxed{8/81}.
+\]
+一般第 $n$ 次才获得第 $r$ 次成功的概率为 $\binom{n-1}{r-1}p^r(1-p)^{n-r}$。先用中文写清事件再选组合数；这不是需要新知识的难题。
+
+\subsection{13. 圆锥体积最优化：E}
+\label{ms:q13}
+\textbf{原题。}A supplier is manufacturing disposable paper cups in the shape of a right circular cone. The slant height of each cone is to be 4 inches long. What should be the diameter of the open circular base of the cup, so that it holds the maximum possible volume of water?
+
+(A) $4\sqrt3/3$ \quad (B) $8\sqrt3/3$ \quad (C) $2\sqrt6/3$ \quad (D) $4\sqrt6/3$ \quad (E) $8\sqrt6/3$.
+
+\textbf{词义。}right circular cone：正圆锥；slant height：母线长；diameter：直径，不是半径。
+
+\textbf{错因。}选D。建模与最优化路线正确，已算到半径平方为 $32/3$，但后续化简少乘了2；最终D恰为正确半径，而题目问直径。不是不会最优化。
+
+\textbf{解答。}令半径 $r$，高 $h=\sqrt{16-r^2}$，体积 $V=\pi r^2\sqrt{16-r^2}/3$。在 $0<r<4$，最大化 $V$ 等价于最大化 $r^4(16-r^2)$；令 $u=r^2$，求 $u^2(16-u)$ 的导数 $32u-3u^2$，得 $u=32/3$。于是
+\[
+r=\sqrt{32/3}=4\sqrt6/3,\qquad d=2r=\boxed{8\sqrt6/3}.
+\]
+端点体积为0，内部驻点给出最大值。最后单独检查所求量是 $r$ 还是 $d$。
+
+\subsection{14. 变上限积分的两个零点：C}
+\label{ms:q14}
+\textbf{原题。}For how many values of $x$ does $\displaystyle\int_{-3}^x t\sqrt{9+t^2}\,dt=0$?
+
+(A) None \quad (B) One \quad (C) Two \quad (D) Three \quad (E) Four.
+
+\textbf{错因。}原蓝笔D与答案不符；复盘自述原先只想到 $x=3$ 的奇函数对称抵消，漏掉上下限相同的 $x=-3$。手写选项与口述原先计数并不一致，均保留记录，不把二者强行改成同一说法。复盘已确认应有两个解。
+
+\textbf{解答。}奇函数在 $[-3,3]$ 积分为0；上下限同为 $-3$ 也为0。为排除其他解，直接积分：
+\[
+\int_{-3}^x t\sqrt{9+t^2}\,dt
+=\frac{(9+x^2)^{3/2}-18^{3/2}}3=0
+\iff x^2=9.
+\]
+所以恰有 $\pm3$ 两解。奇函数对称抵消与上下限相等是两种不同理由。
+
+\subsection{24. units 是可逆元，不是单位元：B}
+\label{ms:q24}
+\textbf{原题。}Which of these rings has the largest number of units?
+
+(A) $\mathbb Z_6$ \quad (B) $\mathbb Z_7$ \quad (C) $\mathbb Z_8$ \quad (D) $\mathbb Z$ \quad (E) $\mathbb Z\times\mathbb Z$.
+
+\textbf{错因。}选E。不熟悉 unit 的含义，误以为是在问环的单位元。这里应数满足 $ab=ba=1$ 的可逆元素，不是在数乘法单位元。定义先读 \hyperref[review:rings]{环的基础}。
+
+\textbf{逐项分析。}模 $n$ 剩余类可逆当且仅当与 $n$ 互素：A的可逆元为 $1,5$，共2个；B的非零元全可逆，共6个；C为 $1,3,5,7$，共4个；D只有 $\pm1$，共2个；E的运算分量进行，$(a,b)$ 可逆当且仅当两个分量都在 $\mathbb Z$ 可逆，因此为 $(\pm1,\pm1)$，共4个。最大为B。无限环不代表可逆元无限，整数环就是反例。
+
+\subsection{25. 指数衰减乘振荡：C}
+\label{ms:q25}
+\textbf{原题。}Let $y=f(x)$ be a nonzero solution to the differential equation $y''+4y'+7y=0$. Which of the following statements must be true?
+\begin{enumerate}[label=\Roman*.]
+\item The equation $f(x)=0$ has infinitely many solutions.
+\item $\displaystyle\lim_{x\to\infty}f(x)=0$.
+\item $\displaystyle\lim_{x\to-\infty}|f(x)|=\infty$.
+\end{enumerate}
+(A) I only \quad (B) II only \quad (C) I and II only \quad (D) II and III only \quad (E) I, II, and III.
+
+\textbf{错因。}选D。虽已求出复特征根，却仍按不振荡的实指数理解，排除了零点；又把 $x\to-\infty$ 时振幅增长误认为绝对值必趋于无穷。复盘时II的判断正确，应写成 $e^{-2x}$ 的衰减，而不是常数 $e^{-2}$。
+
+\textbf{解答。}按本题通常的实值解理解，根为 $-2\pm i\sqrt3$，故
+\[
+f(x)=e^{-2x}(A\cos\sqrt3x+B\sin\sqrt3x)
+=Re^{-2x}\cos(\sqrt3x-\phi),\quad R>0.
+\]
+I真：余弦有无穷多个零点；II真：有界三角函数乘衰减指数趋零；III假：向负无穷走仍反复为零，不能整体趋无穷。准确地说 $\liminf_{x\to-\infty}|f(x)|=0$、$\limsup_{x\to-\infty}|f(x)|=\infty$。这是上极限，不只是全局上确界。只I、II真，选C。若允许任意复值解，单独的 $e^{(-2+i\sqrt3)x}$ 会改变I、III的真值，本题预期隐含实值解。
+
+\subsection{27. 最大方向导数：B}
+\label{ms:q27}
+\textbf{原题。}Let $g$ be the function defined by $g(x,y,z)=z^2e^{xy}$ for all real $x$, $y$, and $z$. The maximum possible value $M$ of the directional derivative of $g$ at the point $(2,0,-1)$ in the direction of some vector $\mathbf u\in\mathbb R^3$ falls within which of the following ranges?
+
+(A) $1<M<2$ \quad (B) $2<M<3$ \quad (C) $3<M<4$ \quad (D) $4<M<5$ \quad (E) $M>5$.
+
+\textbf{词义。}directional derivative：方向导数，标准定义沿单位方向向量计算；maximum possible：在所有方向中取最大。
+
+\textbf{错因。}选E，复盘一度怀疑答案错，因为算出带 $2e^2,-2e^2$ 的分量。实际在给定点 $xy=2\cdot0=0$，所以 $e^{xy}=1$，不是 $e^2$；此外最大方向导数是梯度的模，不是某个分量本身。
+
+\textbf{解答。}
+\[
+\nabla g=(yz^2e^{xy},xz^2e^{xy},2ze^{xy}),\qquad
+\nabla g(2,0,-1)=(0,2,-2).
+\]
+对单位向量 $\mathbf u$，$D_{\mathbf u}g=\nabla g\cdot\mathbf u\le\|\nabla g\|$，同向时取等号，故 $M=2\sqrt2\in(2,3)$。先把所有复合表达式的输入算清楚，尤其指数 $xy$。
+
+\subsection{31. Taylor 收敛半径：B}
+\label{ms:q31}
+\textbf{原题。}Suppose the power series $a_0+a_1(x+1)+a_2(x+1)^2+a_3(x+1)^3+\cdots$ is used to represent the function $f(x)=2x/(x^2+1)$. What is the radius of convergence of this power series?
+
+(A) $1$ \quad (B) $\sqrt2$ \quad (C) $\sqrt3$ \quad (D) $2$ \quad (E) $\infty$.
+
+\textbf{错因。}选E。认为需要逐项展开并求系数或比值，判断耗时不值得而猜选；缺少复奇点与收敛半径的联系。实轴分母不为零，也不能推出收敛半径无穷。
+
+\textbf{短解。}中心为 $-1$，不是0。复延拓 $2z/(z^2+1)$ 在 $\pm i$ 有不可去简单极点，距离中心均为
+\[
+|-1-i|=|-1+i|=\sqrt2.
+\]
+故半径为 $\sqrt2$。也可设 $t=z+1$，分母根变成 $1\pm i$，模为 $\sqrt2$；不必实际求出全部系数。掌握这一个联系后，本题应转为短题。
+
+\subsection{35. 自治微分方程与整数初值：D}
+\label{ms:q35}
+\textbf{原题。}Let $y=f(x)$ be a solution to the differential equation $y'=y^3-3y+2$, $y(0)=a$, where $a\in\mathbb Z$. For how many values of $a$ is $\displaystyle\lim_{x\to\infty}f(x)$ finite?
+
+(A) One \quad (B) Two \quad (C) Three \quad (D) Four \quad (E) More than four.
+
+\textbf{错因。}选E。已意识到初值可以落在 $[-2,1]$，但漏读 $a\in\mathbb Z$，把一整段实数都计入。主要是审题，不需要求复杂通解。
+
+\textbf{解答。}$y'=(y-1)^2(y+2)$，平衡解 $-2,1$。在 $(-2,1)$ 中导数为正，解受唯一性约束不能穿过平衡解，单调趋向1；端点给常值解。在区间外，解向外移动，不可能有有限的长期极限（有的解甚至有限时间爆破，当然不满足所问的长期有限极限）。因此合法整数仅 $-2,-1,0,1$，共4个。
+
+\subsection{36. 积分函数的拐点与可微性：D}
+\label{ms:q36}
+\textbf{原题。}The above graph of $y=f(x)$, defined for $-2\le x\le3$, consists of a semicircle and two line segments. Define $g(x)=\int_0^x f(t)\,dt$, and let $A$, $B$, and $C$ be defined as follows:
+
+$A=$ The maximum value of $g(x)$ for $-2\le x\le3$.
+
+$B=$ The number of inflection points of $g(x)$ for $-2\le x\le3$.
+
+$C=$ The number of points at which $g(x)$ is not differentiable for $-2\le x\le3$.
+
+Which of the following correctly ranks the values of $A$, $B$, and $C$?
+
+(A) $A<B<C$ \quad (B) $A<C=B$ \quad (C) $B<A<C$ \quad (D) $C<A<B$ \quad (E) $C=B<A$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[->](-2.4,0)--(3.4,0) node[right]{$x$};
+\draw[->](0,-1.4)--(0,1.6) node[above]{$y$};
+\draw[thick,domain=180:360,samples=70] plot ({-1+cos(\x)},{sin(\x)});
+\draw[thick](0,0)--(1,1)--(3,-1);
+\foreach \x in {-2,-1,1,2,3}{\draw(\x,.05)--(\x,-.05) node[below]{$\x$};}
+\node[right] at(1.1,1.1){$y=f(x)$};
+\end{tikzpicture}
+\end{center}
+\textbf{词义。}inflection point：拐点，曲线凹凸性改变之处；不是极值点，也不要求二阶导数在该点存在。
+
+\textbf{错因。}选C。不清楚 inflection point；还把 $f$ 的尖角或不可微误传给 $g$，但 $g$ 是 $f$ 的积分。应先写 $g'=f$、在可用处 $g''=f'$。
+
+\textbf{解答。}$f$ 在 $-1$ 由减变增，在1由增变减，因此 $g$ 有两个拐点，$B=2$；0两侧 $f$ 都递增，不是拐点。$f$ 在整个区间连续，所以 $g$ 在内部处处可微，端点按题目通常的一侧约定，$C=0$。$g$ 在 $[-2,0]$ 递减，在 $[0,2]$ 递增，在 $[2,3]$ 递减；比较候选最大值 $g(-2)=\pi/2$ 与 $g(2)=1$，得 $A=\pi/2$。所以 $0<\pi/2<2$，选D。端点若坚持要求双侧定义，则原题需说明延拓，考试通常不据此计为不可微点。
+
+\subsection{38. 子群阶的存在性：E}
+\label{ms:q38}
+\textbf{原题。}If $G$ is a group of order 60, then $G$ does not necessarily have a subgroup of order:
+
+(A) $2$ \quad (B) $3$ \quad (C) $4$ \quad (D) $5$ \quad (E) $6$.
+
+\textbf{词义。}does not necessarily：不保证，要求找出可能不存在者；不是断言所有60阶群都没有该子群。
+
+\textbf{错因。}选C。把“子群阶整除群阶”的必要条件当成充分条件，认为2、3、4、5、6均整除60所以都应存在；不熟悉柯西与Sylow的存在性区别。
+
+\textbf{逐项判断。}2、3、5为整除60的素数，柯西定理保证相应阶的元素与子群。$60=2^2\cdot15$，Sylow保证4阶子群。6不是素数幂，不能用这些结论保证，因此选E。
+
+\textbf{反例证明6确实可能不存在。}取 $G=A_4\times C_5$，阶60。若 $H$ 阶6，投影到 $C_5$ 的像阶同时整除6和5，只能为1，故 $H\subseteq A_4\times\{e\}$。而 $A_4$ 没有6阶子群：若有，其指数2，故正规，得到到 $C_2$ 的满同态。每个3循环的像阶整除3和2，只能为单位元；3循环生成 $A_4$，所以同态只能平凡，矛盾。$A_4$ 的非单位元素是3循环与双换位，双换位也能写成两个3循环之积，例如 $(12)(34)=(132)(134)$（右边先作用）。考场先记 \hyperref[review:lagrange]{拉格朗日的方向}及柯西、Sylow，不必临时重造反例。
+
+\subsection{47. 传递关系必须检查自环：D}
+\label{ms:q47}
+\textbf{原题。}The vertex-edge graph above depicts a relation $\sim$ on the set $S=\{a,b,c,d\}$. For any $x\in S$ and $y\in S$, an arrow drawn from $x$ to $y$ on the graph signifies that $x\sim y$. What is the minimum number of additional arrows that must be drawn so that the relation represented by the resulting vertex-edge graph is transitive?
+
+(A) Two \quad (B) Three \quad (C) Four \quad (D) Five \quad (E) Seven.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth]
+\node(a)at(0,2){$a$};\node(b)at(2,2){$b$};\node(c)at(0,0){$c$};\node(d)at(2,0){$d$};
+\path[->,thick](a)edge[bend left=25](b)(b)edge[bend left=25](a)(c)edge(a)(b)edge(d)(c)edge[loop below](c)(d)edge[loop below](d);
+\end{tikzpicture}
+\end{center}
+\textbf{错因。}选A。复盘认为补 $a\to c,d\to b$ 两条就够，曾怀疑答案；但没有按有向传递性逐条检查，也漏掉 $a,b$ 必需的自环。图中原来是 $c\to a,b\to d$，不能把箭头当无向边。
+
+\textbf{解答。}transitive：$x\sim y$ 且 $y\sim z$ 必须推出 $x\sim z$，允许 $x=z$。原有 $a\to b\to a$ 强制 $a\to a$，$b\to a\to b$ 强制 $b\to b$；$a\to b\to d$ 强制 $a\to d$；$c\to a\to b$ 强制 $c\to b$，再由 $c\to b\to d$ 强制 $c\to d$。这五条各自都必需，补完后 $a,b$ 各可到 $a,b,d$，$c$ 可到所有点，$d$ 只能到自身，已经传递，因此最少5条。新增箭头可能引出新的传递要求，不能补两条后只检查原来的路径。
+
+\subsection{50. 正弦积分的级数估算：E}
+\label{ms:q50}
+\textbf{原题。}Estimate $\displaystyle\int_0^1\frac{\sin t}{t}\,dt$ to the nearest thousandth.
+
+(A) $0.942$ \quad (B) $0.943$ \quad (C) $0.944$ \quad (D) $0.945$ \quad (E) $0.946$.
+
+\textbf{词义。}nearest thousandth：四舍五入到小数点后三位。
+
+\textbf{错因。}选C。知道用 Taylor 展开积分，但加减号写反，且 $1/18$ 的小数计算错误；方法正确，数值执行失误。复盘不应再把它记成“不会积分”。
+
+\textbf{解答。}
+\[
+\frac{\sin t}{t}=1-\frac{t^2}{3!}+\frac{t^4}{5!}-\cdots,\qquad
+I=1-\frac1{18}+\frac1{600}-\frac1{35280}+\cdots.
+\]
+前三项为 $0.946111\ldots$，交错级数余项绝对值小于 $1/35280<0.000029$，因此 $0.946082<I<0.946112$，保留三位小数必为 $0.946$。逐项积分后既要除阶乘，还要除幂次加1；先写分数与符号再转小数。
+
+\subsection{52. 一致连续与柯西列：原题措辞有缺陷}
+\label{ms:q52}
+\textbf{原题。}Let $f:(0,1)\to(0,\infty)$ be a uniformly continuous function. Which of the following statements are true?
+\begin{enumerate}[label=\Roman*.]
+\item If $\{x_n\}$ is a Cauchy sequence in $(0,1)$, then $\{f(x_n)\}$ is a Cauchy sequence in $(0,\infty)$.
+\item If $\lim_{n\to\infty}x_n$ exists, then $\lim_{n\to\infty}f(x_n)=f(\lim_{n\to\infty}x_n)$.
+\item If $\{x_n\}$ and $\{y_n\}$ are two Cauchy sequences in $(0,1)$, then $\{|f(x_n)-f(y_n)|\}$ is a Cauchy sequence in $(0,\infty)$.
+\end{enumerate}
+(A) I only \quad (B) I and II only \quad (C) I and III only \quad (D) II and III only \quad (E) I, II, and III.
+
+\textbf{作答与疑问。}选E，与答案表一致，但依据主要是“一致连续很强”的直觉，不会完整证明。审核发现II遗漏极限在定义域内的条件，III又把可能等于0的数列写成位于正数集；不能把原题E当作严格正确结论。
+
+\textbf{定义与I。}uniformly continuous：对每个 $\varepsilon>0$，存在一个对所有输入点都有效的 $\delta>0$，使 $|x-y|<\delta\Rightarrow|f(x)-f(y)|<\varepsilon$。Cauchy sequence：尾部任意两项可彼此任意接近，不要求极限属于当前空间。给定 $\varepsilon$，由一致连续取 $\delta$，由输入列是柯西列取 $N$，使 $m,n>N$ 时 $|x_m-x_n|<\delta$，于是 $|f(x_m)-f(x_n)|<\varepsilon$，I正确。即使像列趋向0而0不在目标空间，它仍可在该空间中是柯西列。
+
+\textbf{II的缺口。}取 $f(x)=x$、$x_n=1/(n+1)$，函数一致连续且映入正数，但极限为0，$f(0)$ 未定义。若补充 $\lim x_n=L\in(0,1)$，则由普通连续性已可推出等式，不需要一致连续。一致连续还保证可唯一连续延拓为实值函数 $\bar f$ 到 $[0,1]$，但原题未定义该延拓；延拓的端点值也可能为0，未必仍落在 $(0,\infty)$。
+
+\textbf{III的正确核心与错误措辞。}由I，两像列是实数柯西列，且
+\[
+\big||f(x_m)-f(y_m)|-|f(x_n)-f(y_n)|\big|
+\le |f(x_m)-f(x_n)|+|f(y_m)-f(y_n)|,
+\]
+所以绝对差列在 $\mathbb R$ 中是柯西列。但若 $x_n=y_n$，该列恒为0，不在原文的 $(0,\infty)$ 中。严格按题面仅I成立，对应A；若只把III改成“in $\mathbb R$”，则为C；同时补II的域内极限条件后才为E。复习应掌握证明与定义域限制，不必花时间猜作者意图。
+
+\subsection{53. 正切函数的留数：B}
+\label{ms:q53}
+\textbf{原题。}Calculate $\displaystyle\frac1{2\pi i}\oint_C\tan z\,dz$, where $C$ is the circle $|z-1|=1$ parametrized counterclockwise.
+
+(A) $-2$ \quad (B) $-1$ \quad (C) $0$ \quad (D) $1$ \quad (E) $2$.
+
+\textbf{错因。}选D。已经尝试留数定理，但结果为正1；从计算可定位关键负号来自 $(\cos z)'=-\sin z$，不能把简单零点的导数比例漏掉。后续对话还暴露“二阶、三阶项积分为零”和高阶极点求导公式之间的混淆，已在 \hyperref[review:residues]{前置复变复习}完整说明。
+
+\textbf{解答。}$\tan z=\sin z/\cos z$ 的极点是 $\pi/2+k\pi$。圆心1、半径1，只包含 $\pi/2$；$-\pi/2$、$3\pi/2$ 都在圆外。该点为简单极点，
+\[
+\operatorname{Res}(\tan z,\pi/2)
+=\frac{\sin(\pi/2)}{-\sin(\pi/2)}=-1.
+\]
+逆时针积分是 $-2\pi i$，再除 $2\pi i$ 得 $-1$。公式不是把 $z-a$ 取为1，而是提取负一次项；分母的一阶 Taylor 系数为 $Q'(a)$，故要除以它。
+
+\subsection{54. $A^3=A$：逐项反例与必然结论：D（实际答对）}
+\label{ms:q54}
+\textbf{原题。}Suppose $A$ is a $3\times3$ matrix with the property that $A^3=A$. Which of the following must be true?
+\begin{enumerate}[label=(\Alph*)]
+\item The eigenvalues of $A$ are distinct.
+\item If $A$ is invertible, then $A^T=A$.
+\item $A^2$ is the identity matrix or the zero matrix.
+\item The trace of $A^2$ equals the rank of $A$.
+\item The absolute value of the trace of $A^3$ equals the rank of $A$.
+\end{enumerate}
+\textbf{词义与作答。}must be true：对满足条件的所有矩阵成立；distinct：互不相同；trace：迹，对角元之和；rank：秩；transpose $A^T$：转置。原始蓝笔漏写最终字母，现明确实际选D，正确；仍收录所有选项以通过反例巩固。
+
+\textbf{先取结构。}按通常实数或复数矩阵理解，$A$ 满足 $A(A-I)(A+I)=0$，其最小多项式整除无重根多项式 $t(t-1)(t+1)$，因此可对角化。特征值只能是 $0,1,-1$，但可以重复。设它们的重数为 $n_0,n_+,n_-$，则
+\[
+n_0+n_++n_-=3,\quad
+\operatorname{rank}A=n_++n_-,\quad
+\operatorname{tr}(A^2)=n_++n_-,\quad
+\operatorname{tr}(A^3)=n_+-n_-.
+\]
+不是“特征值只有三个可能值”就自动可对角化；真正理由是湮灭多项式无重根。也可不靠对角化证明D：令 $P=A^2$，由 $A^4=A^2$ 得 $P^2=P$，幂等矩阵的迹等于秩；又 $\ker A=\ker A^2$，因为 $A^2v=0\Rightarrow Av=A^3v=A(A^2v)=0$，故两者秩相等。
+
+\textbf{A不必真。}取 $A=I_3$，满足 $A^3=A$，三个特征值均为1，并不互异。不要把“最小多项式无重根”误解成“特征多项式无重根”。
+
+\textbf{B不必真。}可逆只推出 $A^2=I$，不推出对称。反例
+\[
+A=\begin{pmatrix}1&1&0\\0&-1&0\\0&0&1\end{pmatrix}.
+\]
+直接相乘 $A^2=I_3$，故可逆且 $A^3=A$，但 $A^T\ne A$。可对角化也不等于能用正交矩阵对角化；实对称是更强性质。
+
+\textbf{C不必真。}取 $A=\operatorname{diag}(1,0,0)$，则 $A^3=A$，但 $A^2=A$ 既非单位矩阵也非零矩阵。
+
+\textbf{D必真。}由上述重数计数，平方把 $1,-1$ 都变成1，0仍为0，所以 $\operatorname{tr}(A^2)=n_++n_-=\operatorname{rank}A$。只有这一项对所有情况成立。
+
+\textbf{E不必真。}取 $A=\operatorname{diag}(1,-1,0)$，满足条件，但 $|\operatorname{tr}(A^3)|=0$，$\operatorname{rank}A=2$。迹允许正负抵消，秩不会抵消。一般 $|n_+-n_-|\le n_++n_-$，仅在非零特征值不同时含正负两类时相等。
+
+\subsection{55. 四次多项式用有限差分：A}
+\label{ms:q55}
+\textbf{原题。}Selected values of a polynomial $f(x)$ of degree 4 are given in the table above. What is the value of $f(5)$?
+\[
+\begin{array}{c|rrrrr}x&0&1&2&3&4\\\hline f(x)&1&-5&-7&-2&3\end{array}
+\]
+(A) $-9$ \quad (B) $-4$ \quad (C) $2$ \quad (D) $7$ \quad (E) $11$.
+
+\textbf{错因。}选E。以为必须求四次多项式全部系数，解线性方程组甚至求逆，估计超过五分钟，因而放弃猜选。主要缺少有限差分方法，不是题目必然计算量大。即使走系数法也不必求逆，但本题有更直接结构。
+
+\textbf{解答。}等距节点下，次数4的多项式四阶差分恒定；因为 $\Delta p(x)=p(x+1)-p(x)$ 每作用一次降一次次数。列出
+\[
+\begin{array}{c|rrrrr}
+f&1&-5&-7&-2&3\\
+\Delta f&-6&-2&5&5\\
+\Delta^2f&4&7&0\\
+\Delta^3f&3&-7\\
+\Delta^4f&-10
+\end{array}
+\]
+向右延续第四阶 $-10$，依次回加：下一三阶为 $-17$，二阶为 $-17$，一阶为 $-12$，所以 $f(5)=3-12=-9$。也可直接用 $\Delta^5 f(0)=0$：
+\[
+f(5)=5f(4)-10f(3)+10f(2)-5f(1)+f(0)=-9.
+\]
+考试优先画差分表，少背易错的正负系数。
+
+\subsection{56. 解析函数模长恒定：A（猜对后巩固）}
+\label{ms:q56}
+\textbf{原题。}Let $g(z)$ be an analytic function such that $|g(z)|=3$ for all $z$ in the open disk $|z|<2$. If $g(1)=3i$, find all possible values of $g(-1)$.
+
+(A) $\{3i\}$ \quad (B) $\{-3i\}$ \quad (C) $\{3i,-3i\}$ \quad (D) $\{3,-3,3i,-3i\}$ \quad (E) $\{z\in\mathbb C:|z|=3\}$.
+
+\textbf{作答记录。}选A正确，但自述蒙对，只记得可能有“模长恒定则常值”。需要补齐解析性、连通开区域以及“整个区域内”的条件。
+
+\textbf{解答。}圆盘连通，若 $g$ 非常值，开映射定理要求其像在复平面中开，但 $|g|=3$ 的像落在圆周上，不含任何开圆盘，矛盾。因此 $g$ 常值，由 $g(1)=3i$ 得 $g(-1)=3i$，只有A正确。也可用CR：$g=u+iv$，$u^2+v^2=9$ 求偏导，代入CR得
+\[
+u u_x+v v_x=0,\qquad -u v_x+v u_x=0.
+\]
+系数矩阵行列式绝对值为 $u^2+v^2=9$，故 $u_x=v_x=0$，再由CR得其他偏导为0，所以常值。反例边界：$e^{it}$ 作为实参数曲线模长恒定但不恒定；$g(z)=z$ 在单位圆边界模长恒定但在圆盘内不恒定。不要遗漏假设。
+
+\subsection{57. 螺线闭包连通但不道路连通：C}
+\label{ms:q57}
+\textbf{原题。}Let $C_1$ be the curve defined by the polar equation $r=\theta/(\theta+1)$ for $\theta\ge0$, and let $C_2$ be the circle defined by $x^2+y^2=1$. Let $C=C_1\cup C_2$. Which of the following statements are true with respect to the standard topology on $\mathbb R^2$?
+\begin{enumerate}[label=\Roman*.]
+\item For any point $P\in C$, there exists an open disk centered at $P$ containing some point $Q\in C$ such that $P\ne Q$.
+\item For any collection $\mathcal F$ of open disks such that $C\subseteq\bigcup\mathcal F$, there exists a finite subcollection $\mathcal G\subseteq\mathcal F$ such that $C\subseteq\bigcup\mathcal G$.
+\item For any pair of points $P\in C$ and $Q\in C$, there exists a continuous function $f:[0,1]\to C$ such that $f(0)=P$ and $f(1)=Q$.
+\end{enumerate}
+(A) I only \quad (B) II only \quad (C) I and II only \quad (D) II and III only \quad (E) I, II, and III.
+
+\textbf{错因。}选E。I、II判断正确，但不熟悉III所表达的道路连通；复盘时提出“可能连通但非道路连通”的直觉，正是正确区别。不是没有看出螺线趋向圆，而是不清楚趋近是否足以构造连续路径。
+
+\textbf{I真。}更强的说法“每个开邻域都含别的集合内点”也成立：圆周点沿圆即可找到邻近点，螺线点沿连续参数微移即可。原题只写存在一个开圆盘，逻辑上更弱，并不恰好等同无孤立点；本集合满足更强版本，结论不受影响。
+
+\textbf{II真。}这是以开圆盘为基的紧性表述。$C$ 有界且闭：螺线的有界参数序列极限仍在螺线上，无界参数子列的半径趋1，极限在单位圆；反过来每个圆周点可沿固定角加 $2k\pi$ 得到螺线点趋向它。因此 $C=\overline{C_1}$，由欧氏空间闭且有界判据紧。
+
+\textbf{III假。}道路连通要求一条有限参数区间上的连续路径真正连接两点，单纯无限接近不够。假设从螺线非圆周点到圆周存在路径 $\gamma$，令 $t_0$ 是首次碰到圆周的时刻。对 $t<t_0$，路径在螺线上；半径 $\rho(t)$ 决定唯一螺线参数 $\theta(t)=\rho(t)/(1-\rho(t))$。当 $t\uparrow t_0$，$\rho(t)\to1$，所以 $\theta(t)\to\infty$。令 $\gamma(t_0)$ 的辐角为 $\phi$，连续且趋于无穷的 $\theta(t)$ 在靠近 $t_0$ 时必依次经过 $\phi+2k\pi$ 与 $\phi+(2k+1)\pi$，对应位置分别趋向圆上的相反两点，不能都趋于 $\gamma(t_0)$，矛盾。故只I、II真，选C。$C_1$ 是区间连续像，连通；闭包 $C$ 仍连通，所以此例确实连通但非道路连通。
+
+\subsection{61. 复指数函数之间的线性关系：B}
+\label{ms:q61}
+\textbf{原题。}Let $V$ be the vector space of continuous functions $\mathbb C\to\mathbb C$ under pointwise addition and scalar multiplication by complex numbers, and let $A$ be the set of fourth roots of unity in the complex plane. For each $\alpha\in A$, define the set $S_\alpha=\{\cos\alpha z,\sin\alpha z,e^{\alpha z}\}$. What is the dimension of the subspace of $V$ spanned by $\bigcup_{\alpha\in A}S_\alpha$?
+
+(A) $3$ \quad (B) $4$ \quad (C) $6$ \quad (D) $8$ \quad (E) $12$.
+
+\textbf{错因。}选C。列出 $\cos z,\sin z,e^z,e^{-z},e^{iz},e^{-iz}$ 六个生成函数，就把生成集当成基；复盘怀疑它们线性相关，确实如此。这里允许复数系数，不只实数系数。
+
+\textbf{解答。}$A=\{1,-1,i,-i\}$。欧拉公式给出
+\[
+e^{iz}=\cos z+i\sin z,\quad e^{-iz}=\cos z-i\sin z,\quad
+\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
+\sin z=\frac{e^{iz}-e^{-iz}}{2i}.
+\]
+$\cos(iz)=(e^z+e^{-z})/2$，$\sin(iz)=(e^{-z}-e^z)/(2i)$。因此全部函数由四个指数 $e^z,e^{-z},e^{iz},e^{-iz}$ 张成。它们线性无关：若 $\sum_{j=1}^4 c_je^{\lambda_jz}=0$，在0处求0至3阶导得 $\sum c_j\lambda_j^k=0$，$k=0,1,2,3$；$\lambda_j=1,-1,i,-i$ 互异，范德蒙德矩阵行列式 $\prod_{j<k}(\lambda_k-\lambda_j)\ne0$，故全为零。维数恰为4，选B。只证能由四个张成得到的是维数至多4，还需独立性确认恰好4。
+
+\subsection{62. 所有方向导数存在不等于可微：原答案A错误}
+\label{ms:q62}
+\textbf{原题。}Which of the following must be true of a function $f:\mathbb R^2\to\mathbb R$?
+\begin{enumerate}[label=\Roman*.]
+\item If $\partial f/\partial x$ and $\partial f/\partial y$ exist and are continuous at $(0,0)$, then $f$ is differentiable there.
+\item If $f$ has directional derivatives in all directions at $(0,0)$, then $f$ is differentiable there.
+\item If $\partial^2f/\partial x\partial y$ and $\partial^2f/\partial y\partial x$ exist at $(0,0)$, then they are equal there.
+\end{enumerate}
+(A) None \quad (B) II only \quad (C) I and II only \quad (D) I and III only \quad (E) II and III only.
+
+\textbf{错因与勘误。}选B，原先排除I、III后对II犹豫而猜选；这是对方向导数与全微分关系不清，不只是“二选一运气不好”。但答案表A同样错误：按通常“偏导数在邻域存在并在原点连续”的含义，I是标准充分条件，正确组合是 I only，而选项缺少它。作者解答用 $xy/(x^2+y^2)$ 在原点补0反驳I，但该例 $f_x(0,y)=1/y$（$y\ne0$），偏导数在原点不连续，未满足前提，反例无效。来源：\url{https://www.mathsub.com/wp-content/uploads/mathsub-test-01-solutions.pdf}。
+
+\textbf{I为什么真。}设 $f_x(0,0)=a,f_y(0,0)=b$，把增量拆成
+\[
+f(h,k)-f(0,0)=[f(h,k)-f(0,k)]+[f(0,k)-f(0,0)].
+\]
+沿水平与竖直线分别用一元中值定理，得到 $f_x(\xi,k)h+f_y(0,\eta)k$，其中 $\xi$ 介于0与 $h$、$\eta$ 介于0与 $k$。偏导在原点连续，减去 $ah+bk$ 后是 $o(\sqrt{h^2+k^2})$，正是可微。零增量分支直接处理即可。
+
+\textbf{II反例：连续、所有方向导数存在，仍不可微。}取
+\[
+f(x,y)=\begin{cases}x^3/(x^2+y^2),&(x,y)\ne(0,0),\\0,&(x,y)=(0,0).\end{cases}
+\]
+由 $|f(x,y)|\le|x|\le\sqrt{x^2+y^2}$，原点连续。对任意非零向量 $v=(a,b)$，
+\[
+D_vf(0,0)=\lim_{t\to0}\frac{f(ta,tb)}t=\frac{a^3}{a^2+b^2},
+\]
+所以不仅两个坐标方向，所有方向导数均存在。但 $f_x(0,0)=1,f_y(0,0)=0$，若可微，唯一可能的线性近似为 $L(h,k)=h$。沿 $h=k=t>0$，
+\[
+\frac{f(t,t)-L(t,t)}{\sqrt{t^2+t^2}}=-\frac1{2\sqrt2}\not\to0.
+\]
+故不可微。等价地，可微强制 $D_vf=L(v)$ 关于方向向量线性，而上式不线性；取单位对角方向时，实际方向导数为 $1/(2\sqrt2)$，线性近似却要求 $1/\sqrt2$。不是“已经可微但不满足线性”，而是反证：若可微必须线性，实际不线性，所以不可微。反向也要谨慎：所有方向导数存在且形成线性映射，本身仍不能替代统一的全微分余项估计。
+
+\textbf{III反例。}取
+\[
+F(x,y)=\begin{cases}xy(x^2-y^2)/(x^2+y^2),&(x,y)\ne(0,0),\\0,&(x,y)=(0,0).\end{cases}
+\]
+直接按定义得 $F_x(0,y)=-y$、$F_y(x,0)=x$，所以 $\partial_y(\partial_xF)(0,0)=-1$，而 $\partial_x(\partial_yF)(0,0)=1$。混合偏导仅存在不保证相等；常用充分条件是它们在邻域连续。记住正确关系：偏导连续足以可微，可微推出连续及各方向导数由同一线性映射给出；连续加所有方向导数存在仍不足。
+
+\subsection{64. 理想乘积、交与和：D}
+\label{ms:q64}
+\textbf{原题。}Let $A$ and $B$ be ideals of a ring $R$, and define the ideals $A+B$ and $AB$ as follows:
+\[
+A+B=\{a+b:a\in A,b\in B\},\qquad
+AB=\{a_1b_1+\cdots+a_nb_n:a_i\in A,b_i\in B,\ i\in\{1,\ldots,n\}\},\quad n\in\{1,2,\ldots\}.
+\]
+Which of the following correctly orders $A+B$, $AB$, and $A\cap B$ via inclusion?
+
+(A) $AB\subseteq A+B\subseteq A\cap B$ \quad
+(B) $A\cap B\subseteq AB\subseteq A+B$ \quad
+(C) $A\cap B\subseteq A+B\subseteq AB$ \quad
+(D) $AB\subseteq A\cap B\subseteq A+B$ \quad
+(E) $A+B\subseteq A\cap B\subseteq AB$.
+
+\textbf{错因。}选C。第一步 $A\cap B\subseteq A+B$ 的证明正确：$x=x+0$ 且理想包含0。错误在试图用 $a+b=a\cdot1+1\cdot b$ 证明 $A+B\subseteq AB$；这需要第一个1在B、第二个1在A，但理想不一定含1。含1的理想其实只能是全环。
+
+\textbf{解答。}对每项 $a_ib_i$，A的右吸收性使其在A，B的左吸收性使其在B；两理想对加法封闭，故有限和也在交中。再用 $x=x+0$ 得
+\[
+\boxed{AB\subseteq A\cap B\subseteq A+B}.
+\]
+选D。取 $R=\mathbb Z,A=4\mathbb Z,B=6\mathbb Z$，则 $AB=24\mathbb Z$、$A\cap B=12\mathbb Z$、$A+B=2\mathbb Z$，两个包含均严格；这个例子也逐一排除其余排序。理想乘积允许有限和，与 Practice 1 的50题单个乘积集合不同。
+
+\subsection{65. 等差数列拓扑：E（时间不足猜选，低优先级）}
+\label{ms:q65}
+\textbf{原题。}For each pair of integers $a$ and $b$, let the set $\{a+bn:n\in\mathbb Z\}$ be denoted $a+b\mathbb Z$. Consider the topology $\mathcal T$ on $\mathbb Z$ whose basis is $\{a+b\mathbb Z:a,b\in\mathbb Z\text{ and }b\ne0\}$. Which of the following statements is false?
+\begin{enumerate}[label=(\Alph*)]
+\item $(\mathbb Z,\mathcal T)$ is Hausdorff.
+\item $(\mathbb Z,\mathcal T)$ is totally disconnected.
+\item The set $\{0\}$ is closed under $\mathcal T$.
+\item No nonempty open sets of $\mathcal T$ are finite.
+\item Exactly two sets of $\mathcal T$ are both open and closed.
+\end{enumerate}
+\textbf{作答与复习取舍。}选C；后段时间不足而猜选，且不愿在现阶段深入这种陌生拓扑。保留最短反例与必要定义，不当成单纯粗心。
+
+\textbf{最短解。}basis：基，任意开集是基本开集的并。偶数集 $2\mathbb Z$ 是基本开集，其补集奇数集 $1+2\mathbb Z$ 也开，所以偶数集既开又闭，且非空非全集。除空集、全集外已有第三个既开又闭集合，故E假，选E；无需先证明所有其他项。
+
+\textbf{A真。}Hausdorff要求不同点有不交开邻域。给定整数 $x\ne y$，取正整数 $n>|x-y|$，则 $x+n\mathbb Z$、$y+n\mathbb Z$ 不相交，否则 $n\mid x-y$，矛盾。
+
+\textbf{B真。}totally disconnected：每个连通子集至多一个点。任意含 $x\ne y$ 的子集S，用上面的同余类 $U=x+n\mathbb Z$ 及补集分开；补集是其他有限个模 $n$ 同余类之并，开。$U\cap S$ 与 $(\mathbb Z\setminus U)\cap S$ 是不交非空相对开集，故S不连通。
+
+\textbf{C真。}对任意非零整数 $x$，取 $n>|x|$，则 $x+n\mathbb Z$ 包含x但不含0，故 $\mathbb Z\setminus\{0\}$ 是开集，单点集闭；它不必开。
+
+\textbf{D真。}非空开集中的任一点都有包含于该开集的基本开邻域，而每个 $a+b\mathbb Z$（$b\ne0$）都是无限集，故非空开集无限。不必分析任意无穷交，拓扑只要求有限交保持开。
+
+\subsection{66. 模与极小生成集：B（时间不足猜选，低优先级）}
+\label{ms:q66}
+\textbf{原题。}Let an abelian group $M$ form a left module over a ring $R$. We say that a subset $S$ of $M$ is a spanning set of $M$ if for every $m\in M$, there exist $\{r_1,\ldots,r_n\}\subseteq R$ and $\{s_1,\ldots,s_n\}\subseteq S$ such that $m=\sum_{i=1}^n r_is_i$.
+
+We call this spanning set $S$ minimal if no proper subset of $S$ is a spanning set for $S$. In addition, $S$ is called a basis for $M$ if $m=0$ implies $r_1=r_2=\cdots=r_n=0$.
+
+Which of the following statements must be true?
+\begin{enumerate}[label=\Roman*.]
+\item If $R$ is finite, then any basis $S$ of $M$ is finite.
+\item If $S$ and $S'$ are two distinct minimal spanning sets of $M$, then $|S|=|S'|$.
+\item If $R$ is a field and $S$ is a finite minimal spanning set of $M$, then $S$ is a basis of $M$.
+\end{enumerate}
+(A) II only \quad (B) III only \quad (C) I and II only \quad (D) I and III only \quad (E) II and III only.
+
+\textbf{题面说明。}原文“a spanning set for $S$”按上下文应指生成 $M$；基的线性无关条件按有限个互异生成元、任意线性组合理解。以上保留原题措辞，解答使用标准定义。
+
+\textbf{错因与定位。}选C；时间不足猜选，又不熟悉环上的模、minimal与minimum的区别。当前不优先深入模论，但可用整数例子理解本题。
+
+\textbf{基础概念。}left module：左模，类似向量空间，但系数取自环，数乘满足加法分配及 $(rs)m=r(sm)$，通常还要求 $1m=m$；环中非零系数可能不可逆。spanning set：生成集，每个元素为有限线性组合；minimal：不能删除任何元素后仍生成，并非元素数量全局最少的 minimum；basis：生成且线性无关。一般模不一定有基，不应把向量空间结论全部照搬。
+
+\textbf{I假：有限系数集不限制基的大小。}取 $R=\mathbb F_2$、$M=\mathbb F_2[x]$，作为域 $\mathbb F_2$ 上的向量空间，基为 $\{1,x,x^2,\ldots\}$，无限；每个多项式仍只用有限多个基向量。系数只有0、1不代表只有有限个独立方向。
+
+\textbf{II假：最简单的整数反例。}取 $R=M=\mathbb Z$，允许整数线性组合。$\{1\}$ 生成所有整数且不能删；$\{2,3\}$ 也生成，因为 $1=3-2$，而只留2或只留3分别仅生成 $2\mathbb Z$、$3\mathbb Z$，所以它也极小。两组大小为1、2，II不成立。$\{2,3\}$ 并非基：$3\cdot2-2\cdot3=0$ 是非平凡整数线性关系，但不能除以3或2把另一元素表示成整数倍。
+
+\textbf{III真：域上的有限极小生成集就是基。}若 $S=\{v_1,\ldots,v_n\}$ 线性相关，有 $\sum a_iv_i=0$ 且某系数 $a_j\ne0$。域中 $a_j$ 可逆，故 $v_j=-\sum_{i\ne j}(a_i/a_j)v_i$，删掉 $v_j$ 仍能生成，违反极小性。因此线性无关，故为基。关键不是“有限”本身，而是可以除以非零系数。只有III真，选B。
+
+\subsection{本套错因与下一次检查动作}
+\label{ms:summary}
+\begin{itemize}
+\item 审题：12把“第五次才达第三次成功”读成前五次成功数；14漏上下限相同；35漏整数条件；最后分别写清事件、特殊端点、变量取值范围。
+\item 算术及代入：13半径／直径与根式因子2；27指数 $xy$ 在给定点为0；50符号及 $1/18$；53分母求导漏负号。执行时保留分数，代入后先简化复合量，再检查符号。
+\item 方法缺口：31用复奇点距离代替求系数；55用有限差分代替解方程组。这两题不应继续列为必然耗时超过五分钟的题。
+\item 概念：24区分 unit/unity；25指数实部决定包络而虚部带来振荡；36先写 $g'=f$；38不能倒用拉格朗日；47检查自环与新增路径；61生成集不一定独立；64理想不一定含1。
+\item 答对仍需巩固：52补一致连续到柯西列的证明并标勘误；54实际选D正确，但逐项反例要会；56补解析函数常模的条件。
+\item 题目质量：62按通常数学定义I真、II与III假，选项缺 I only；52按严格原文也不能选E。不要用错误答案破坏正确知识。
+\item 取舍：65、66按现阶段策略低优先级，保留短解和基本反例；不把“复盘后能懂”直接当作下一次一定能在时限内独立做对。
+\end{itemize}
+
 \end{document}
+
